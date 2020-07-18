@@ -2,6 +2,8 @@ import React from 'react';
 
 export default function Serve(){
     return(
-        <div>Serve</div>
+        <div className="serve">
+            <div className="serveHeader"></div>
+        </div>
     )
 }
