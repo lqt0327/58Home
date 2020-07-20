@@ -5,7 +5,7 @@
     width: 7.5rem;
     margin-top: 0.2rem;
     display: flex;
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
 }
 .serveSearchBox{
     flex:1;
@@ -40,8 +40,54 @@
 .serveTopRight{
     height: 1rem;
     width: 1rem;
-    background-color: rosybrown;
+    /* background-color: rosybrown; */
 }
 .serveTopRight img{
     width: 70%;
+}
+
+.serveWrapper{
+    width: 100vw;
+    display: flex;
+}
+.serveLeft{
+    width: 1.8rem;
+    background-color: #f1f2f6;
+}
+.serveLeft ul{
+    width: 1.8rem;
+    height: calc(100vh - 2.2rem);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.serveLeft ul::-webkit-scrollbar{
+    display: none;
+}
+.serveLeft ul li{
+    display: block;
+    font-size: 0.34rem;
+    color: black;
+    width: 1.8rem;
+    height: 1.1rem;
+    line-height: 1.1rem;
+    padding-left: .2rem;
+}
+/* .serveLeft ul li:hover{
+    
+} */
+.serveRight{
+    flex: 1;
+    height: calc(100vh - 2.2rem);
+    background-color: white;
+    overflow: hidden;
+}
+/* .serveRight .pagesContent{
+    height: calc(100vh - 2.2rem);
+} */
+.serveRight .pagesContent li{
+    height: calc(100vh - 2.2rem);
+}
+.active{
+    color: red !important;
+    background-color: white;
 }
