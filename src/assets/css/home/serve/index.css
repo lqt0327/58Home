@@ -71,6 +71,7 @@
     height: 1.1rem;
     line-height: 1.1rem;
     padding-left: .2rem;
+    
 }
 /* .serveLeft ul li:hover{
     
@@ -86,8 +87,77 @@
 } */
 .serveRight .pagesContent li{
     height: calc(100vh - 2.2rem);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
+.serveRight .pagesContent li .serveContent{
+    margin: 0 auto;
+    width: 5.3rem;
+    margin-bottom: 0.5rem;
+}
+.serveRight .pagesContent li .serveContent .topImg{
+    width: 100%;
+    height: 1.8rem;
+    
+}
+.serveRight .pagesContent li .serveContent .topImg img{
+    width: 100%;
+    height: 100%;
+}
+.serveRight .pagesContent li .serveContent .itemTitle{
+    display: block;
+    width: 100%;
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem;
+    color: black;
+    font-weight: 700;
+}
+.serveRight .pagesContent li .serveContent .serveItem{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.serveRight .pagesContent li .serveContent .serveItem .sItemWrapper{
+    width: 32%;
+    height: 2rem;
+    margin-left: 0.053rem;
+    margin-top: 0.053rem;
+}
+.serveRight .pagesContent li .serveContent .serveItem .sItemWrapper .sItemImg{
+    margin: 0 auto;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+.serveRight .pagesContent li .serveContent .serveItem .sItemWrapper .sItemImg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.serveRight .pagesContent li .serveContent .serveItem .sItemWrapper span{
+    display: block;
+    text-align: center;
+    font-size: 0.25rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+}
+
 .active{
     color: red !important;
     background-color: white;
+    position: relative;
 }
+.active::before{
+    content: '';
+    height: 0.34rem;
+    width: 0.1rem;
+    background-color: red;
+    display: inline-block;
+    border-radius: .05rem;
+    position: absolute;
+    left: -.05rem;
+    margin-top: .38rem;
+}
+
