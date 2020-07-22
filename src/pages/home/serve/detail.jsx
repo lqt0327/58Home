@@ -5,6 +5,14 @@ import '../../../assets/css/home/serve/detail.css'
 import Header from '../../../components/header/header'
 import datas from './detail.json'
 import { useRef } from 'react';
+let standardsData = [
+  {title:'油烟机免拆洗',
+   price:'￥149/台'},
+  {title:'油烟机拆洗',
+   price:'￥180/台'},
+  {title:'油烟机+灶台拆洗',
+   price:'￥220/台'},
+]
 function Detail() {
   // 是否选择伪类
   let [isSelected,setSelected] = useState(1)
@@ -12,6 +20,7 @@ function Detail() {
   let goodsBegin = useRef(null)
   let goodsDetail = useRef(null)
   let goodsRecommend = useRef(null)
+
   // swiper 必备
   useEffect(()=>{
    let s =  new Swiper('.swiper-container', {
@@ -19,11 +28,11 @@ function Detail() {
       pagination: '.swiper-pagination',
       loop : true,
     })
+    // function Scroll(){
+    //   console.log(goodsBegin.current.getBoundingClientRect().top)
+    // }
+    // goodsBegin.current.addEventListener('touchmove',Scroll)
   },[])
-  // 锚链接跳转
-  window.addEventListener('scroll',()=>{
-    console.log(goodsDetail.current.scrollTop)
-  })
   let scrollToAnchor = (anchorName) => {
     if (anchorName) {
         window.scrollTo({
@@ -33,7 +42,8 @@ function Detail() {
     }
 }
   return (
-   <div>
+   <div className='bigwrap'>
+     <div className="wrap"></div>
       <Header />
    <div className='toscroll'> 
    <div className='content' ref={goodsBegin}>
@@ -129,6 +139,36 @@ function Detail() {
       </div>
     </div>
 
+  </div>
+  <div className="standards-wrap">
+    <div className="standards-header">
+      <div className="standards-header-title">请选择服务规格</div>
+      <div className="standards-header-logo">
+        <img className='standards-header-pic' src={require('../../../assets/images/common/cancel.png')} alt=""/>
+      </div>
+    </div>
+    <div className="standards-body-wrap">
+      <p>清洗数量</p>
+      <ul>
+        {standardsData.map((item,i)=>{
+         return <li key={i}>
+          <img src={require('../../../assets/images/common/cancel.png')} alt="" className="standards-body-left-logo"/>
+          <div className="standards-content">
+          <h4>{item.title}</h4>
+          <p>{item.price}</p>
+          </div>
+          <div className="standards-count-wrap">
+            <div><img className='standards-minus' src={require('../../../assets/images/common/minus.png')} alt=""/></div>
+            <p className="standards-count">0</p>
+            <div><img className='standards-add' src={require('../../../assets/images/common/add.png')} alt=""/></div>
+          </div>
+        </li>
+        })}
+      </ul>
+    </div>
+    <div className="standards-bottom-wrap">
+        <input type="button" className="standards-button" value='确定'/>
+    </div>
   </div>
    </div>
   )

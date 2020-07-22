@@ -1,13 +1,22 @@
 /* 整个容器 */
-.toscroll{
-
- 
+/* .wrap{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  background: rgba(0,0,0,0.1);
+} */
+.bigwrap{
+  position: relative;
 }
 .content {
   position: relative;
   margin-top: 0.88rem;
   background-color: #f2f2f2;
   margin-bottom: 0.8rem;
+  overflow-y:scroll;
 }
 /* 导航栏 */
 .nav {
@@ -150,7 +159,7 @@
 /* detail */
 .detail {
   background-color: #fff;
-  
+
 }
 .detail-header {
   position: relative;
@@ -227,6 +236,7 @@
   right: 0;
   background-color: #fff;
   height: 0.8rem;
+  
  
 }
 .bottom-left{
@@ -247,6 +257,93 @@
   width: 6rem;
   height: 0.6rem;
   background: linear-gradient(to right,#ff7a59,#fe504c);
+  border-radius: 0.06rem;
+  color: #fff;
+}
+/* standards */
+.standards-wrap{
+  position: fixed;
+  background-color: #fff;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  border-radius: 5px;
+  z-index: 8;
+}
+.standards-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #efefef;
+  font-size: 15px;
+  font-weight: 550;
+  padding: 10px;
+  border-radius: 5px;
+}
+.standards-header-pic{
+  width: 13px;
+}
+.standards-body-wrap{
+  padding: 10px;
+}
+.standards-body-wrap > p{
+  font-size: 15px;
+  font-weight: 550;
+}
+.standards-body-wrap ul li {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #efefef;
+}
+.standards-body-wrap ul li > img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+.standards-content {
+  display: flex;
+  flex-direction: column;
+}
+.standards-content > h4 {
+  font-size: 12px;
+  font-weight: normal;
+}
+.standards-content > p {
+  font-size: 11px;
+  color: #85888a;
+}
+.standards-count-wrap{
+  display: flex;
+  width: 85px;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
+.standards-count-wrap img{
+  width: 15px;
+  height: 15px;
+}
+.standards-count-wrap > div {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #000;
+  border-radius: 8.5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.standards-bottom-wrap{
+ 
+ padding: 10px;
+}
+.standards-button{
+  width: 100%;
+  height: 0.6rem;
+  background: linear-gradient(to right,#eb5a36,#e60e0a);
   border-radius: 0.06rem;
   color: #fff;
 }
