@@ -1,14 +1,22 @@
 .header{
   display: flex;
   justify-content: space-between;
-  margin-left: 20px;
-  margin-right: 20px;
-  height: 40px;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  height: 0.88rem;
   align-items: center;
+  border: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 99;
+
 }
 .left-wrap{
-  width: 20px;
+  width: 0.4rem;
 }
 .icon{
-  width: 20px;
+  width: 0.4rem;
 }

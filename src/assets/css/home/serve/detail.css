@@ -1,9 +1,248 @@
-.swiper-slide{
-  width: 375px;
-  height: 200px;
+/* 整个容器 */
+.content {
+  position: relative;
+  margin-top: 0.88rem;
+  background-color: #f2f2f2;
+  margin-bottom: 0.8rem;
 }
-.slide-img{
-  width: 375px;
-  height: 200px;
+/* 导航栏 */
+.nav {
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  justify-content: space-around;
+  font-weight: 550;
+  font-size: 0.3rem;
+  background: #fff;
+  top: 0.86rem;
+  left: 0;
+  right: 0;
+  padding-top: 0.1rem;
+  
+}
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 1s ease-in-out;
+  cursor:pointer;
+}
+.selected::after {
+  content: "";
+  display: block;
+  width: 0.3rem;
+  height: 0.06rem;
+  border-radius: 0.04rem;
+  background-color: red;
+  z-index: 2;
+  margin-top: 0.06rem;
+}
+/* swiper */
+.swiper-slide {
+  width: 7.5rem;
+  height: 5rem;
+}
+.swiper-slide .slide-img {
+  width: 7.5rem;
+  height: 5rem;
   object-fit: cover;
+}
+/* center price */
+.center-price {
+  background-color: #fff;
+  padding: 0.24rem;
+}
+.center-price .price-wrap {
+  color: red;
+  font-weight: 600;
+  font-size: 0.26rem;
+}
+.center-price .price-wrap .price {
+  font-size: 0.44rem;
+}
+.title-wrap {
+  font-size: 0.24rem;
+  color: #878d9a;
+}
+.title-wrap .title {
+  font-size: 0.3rem;
+  color: #000;
+  font-weight: 600;
+  padding-top: 0.1rem;
+}
+.title-wrap .title-func {
+  padding-top: 0.1rem;
+}
+.title-wrap .title-time {
+  background-color: #fbfbfb;
+  margin-top: 0.1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+.title-wrap .title-right-icon {
+  width: 0.24rem;
+  vertical-align: middle;
+  margin-right: 0.02rem;
+}
+.title-wrap .title-time-item {
+  margin-right: 0.3rem;
+}
+/* discount-wrap */
+.discount-wrap {
+  display: flex;
+  margin-top: 0.16rem;
+  background-color: #fff;
+  padding: 0.24rem;
+  position: relative;
+  font-size: 0.24rem;
+  align-items: center;
+}
+.discount {
+  color: red;
+  background-color: #fdf1f0;
+  padding-bottom: 0.04rem;
+}
+.discount-title {
+  margin-left: 0.24rem;
+}
+.discount-input-wrap {
+  position: absolute;
+  right: 0.24rem;
+  border: 0.03rem solid #dcdfe1;
+  padding: 0.04rem;
+  border-radius: 0.04rem;
+}
+/* adress-wrap */
+.adress-wrap {
+  background-color: #fff;
+}
+.adress-item {
+  display: flex;
+  padding: 0.24rem;
+  position: relative;
+  align-items: baseline;
+}
+.adress-item-title {
+  font-size: 0.28rem;
+  font-weight: 550;
+  margin-right: 0.2rem;
+}
+.adress-item-input-wrap {
+  border-bottom: 0.02rem solid #e4e9ea;
+  flex: 1;
+  
+}
+.adress-item-input {
+  width: 100%;
+  padding-bottom: 0.2rem;
+  font-size: 0.26rem;
+}
+.adress-img {
+  width: 0.24rem;
+  position: absolute;
+  right: 0.24rem;
+  top: 0.4rem;
+}
+/* detail */
+.detail {
+  background-color: #fff;
+  
+}
+.detail-header {
+  position: relative;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  margin-top: 0.2rem;
+}
+.detail-header-text {
+  position: absolute;
+  top: 0.24rem;
+  background-color: #fff;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  font-weight: 550;
+  
+}
+.detail-header-line {
+  width: 4rem;
+  height: 0.02rem;
+  background-color: #e4e9ea;
+ 
+}
+.detail-img-wrap{
+  font-size: 0;
+}
+.detail-img{
+  width: 7.5rem;
+}
+/* recommends */
+.recommends {
+}
+.recommends-item-wrap {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.recommends-item {
+  width: 3rem;
+  background-color: #fff;
+  margin: 0.1rem;
+  box-shadow: 0.04rem 0.04rem 0.06rem grey;
+}
+
+.recommends-item-img {
+  width: 3rem;
+}
+.recommends-item-title {
+  font-size: 0.3rem;
+  font-weight: 550;
+}
+.recommends-item-serve {
+  font-size: 0.24rem;
+  color: #878d9a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.recommends-item-price {
+  font-size: 0.3rem;
+  color: red;
+  font-weight: 550;
+}
+/* bottom */
+.bottom{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: -0.02rem;
+  right: 0;
+  background-color: #fff;
+  height: 0.8rem;
+ 
+}
+.bottom-left{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1.3rem;
+ 
+}
+.bottom-left-text{
+  font-size: 0.24rem;
+ 
+}
+.bottom-left-img{
+  width: 0.4rem;
+}
+.bottom-right-btn{
+  width: 6rem;
+  height: 0.6rem;
+  background: linear-gradient(to right,#ff7a59,#fe504c);
+  border-radius: 0.06rem;
+  color: #fff;
 }
