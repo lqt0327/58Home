@@ -1,29 +1,57 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import BScroll from 'better-scroll';
 import data from './serve.json';
 import '../../../assets/css/home/serve/index.css';
 import searchImg from '../../../assets/images/home/serve/search.png';
 import addImg from '../../../assets/images/home/serve/add.png';
-import LazyLoad from 'react-lazyload';
+// import LazyLoad from 'react-lazyload';
 
+
+let base = 0, ranges = []
 export default function Serve() {
     let [isActive, setActive] = useState(1)
     // console.log(data)
+    const ref = useRef()
     useEffect(() => {
-        let scroll = new BScroll('.serveRight', {
+        new BScroll('.serveRight', {
             scrollY: true,
             click: true,
-            scrollX: false,
+            tap:true,
+            // scrollX: false,
             snap: {  // 滑块切换的一些配置
                 threshold: 0.5,  // 滑动切换到超过一半时切换到下一屏
                 // stepY: calc(100vh - 2.2rem)  // 纵向切换距离为窗口高度
             }
         })
-        function onScroll(pos) {
-            console.log(`Now position is x: ${pos.x}, y: ${pos.y}`)
-          }
-        scroll.on('scroll', onScroll)
+        
+        
+        const tabDetail = ref.current
+        const tabs = tabDetail.childNodes
+        for (let tab of tabs) {
+            let h = tab.getBoundingClientRect().height;
+            let newH = base + h;
+            console.log(newH)
+            ranges.push([base, newH])
+            base = newH
+        }
+        function onScroll(e) {
+            const scrollTop = -(tabDetail.getBoundingClientRect().top - 100);
+            if(scrollTop <= 0) return
+            if(scrollTop >= 6685) return
+            console.log(scrollTop)
+            const index = ranges.findIndex(range => scrollTop >= range[0] && scrollTop < range[1])
+            setActive(index+1)
+        }
+        
+        tabDetail.addEventListener('touchmove', ()=>{
+            setTimeout(() => {
+                onScroll()
+            }, 300);
+        })
+        console.log(ranges)
+        
     }, [])
+
     let scrollToAnthor = (id) => {
         document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     }
@@ -53,7 +81,8 @@ export default function Serve() {
                                     <li className={`${isActive === i + 1 ? 'active' : ''}`} onClick={() => {
                                         setActive(isActive = i + 1)
                                         scrollToAnthor(`${i + 1}`)
-                                    }} key={i}>
+                                    }} key={i}
+                                    >
                                         {item.name}
                                     </li>
                                 )
@@ -61,12 +90,12 @@ export default function Serve() {
                         }
                     </ul>
                 </div>
-                <div className="serveRight">
-                    <ul className="pagesContent">
+                <div className="serveRight" >
+                    <ul className="pagesContent" ref={ref}>
                         {
                             data.map((item, i) => {
                                 return (
-                                    <li id={i + 1} key={i}>
+                                    <li id={i + 1} key={i} data-rtab={item.name} >
                                         <div className="serveContent">
                                             <div className="topImg">
                                                 <img src={item.content.topImg} alt="" />
