@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.css'
-import Detail from './detail.jsx'
-import { HashRouter, Route,Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 export default function Serve(){
     return(
