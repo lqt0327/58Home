@@ -1,13 +1,13 @@
 /* 整个容器 */
-/* .wrap{
+.wrap{
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 3;
-  background: rgba(0,0,0,0.1);
-} */
+  background: rgba(0,0,0,0.3);
+}
 .bigwrap{
   position: relative;
 }
@@ -32,6 +32,9 @@
   right: 0;
   padding-top: 0.1rem;
   
+}
+.nav-hidden{
+  display: none;
 }
 .nav-bar {
   display: flex;
@@ -264,11 +267,16 @@
 .standards-wrap{
   position: fixed;
   background-color: #fff;
-  bottom: 0;
+  bottom: -300px;
   left: 10px;
   right: 10px;
   border-radius: 5px;
   z-index: 8;
+  height: 300px;
+  transition: all 0.5s;
+}
+.standards-wrap-add{
+  bottom: 0;
 }
 .standards-header{
   display: flex;
@@ -279,6 +287,9 @@
   font-weight: 550;
   padding: 10px;
   border-radius: 5px;
+}
+.standards-header-title{
+  
 }
 .standards-header-pic{
   width: 13px;
