@@ -1,16 +1,62 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Css from '../../../assets/css/home/index/index.module.css';
 import Swiper from '../../../assets/js/utils/swiper.min.js';
-import '../../../assets/js/utils/swiper.min.css'
+import '../../../assets/js/utils/swiper.min.css';
+import config from '../../../assets/js/conf/config';
+import Search from '../../../components/search/search';
 
-export default function Index() {
+export default function Index(props) {
     const [menu, setMenu] = useState(true);
+    const [know,setKnowStyle] = useState(true);
+    const [health,setHealthStyle] = useState(false);
+    const [child,setChildStyle] = useState(false);
+    const [furniture,setFurnStyle] = useState(false);
+
+    const [pageStyle, setPageStyle] = useState({display:"none"})
+
+    const [bScroll,setBScroll] = useState(false);
+
     const pScroll = useRef(null);
     const Xscroll = useRef(null);
+    const HScroll = useRef();
+    const iconMenu = useRef();
     useEffect(() => {
+        // setScrollTop(global.scrollTop)
         getSwiper();
         handleScroll();
+        handleRecoStyle();
+        window.addEventListener("scroll",eventScroll,false);
+        return ()=>{
+            window.removeEventListener("scroll",eventScroll);
+        }
     })
+    const eventScroll = () => {
+        let scrollTop = document.documentElement.scrollTop;
+        let opcity = (scrollTop / 100) > 1 ? 1 : (scrollTop / 100);
+        HScroll.current.style.backgroundColor = `rgba(236,67,33,${opcity})`
+    }
+    // const setScrollTop = (val=0) => () => {
+    //     setTimeout(()=>{
+    //         document.body.scrollTop = val;
+    //         document.documentElement.scrollTop = val;
+    //         console.log(document.body.scrollTop)
+    //     },300)
+    // }
+    const changeSearch = () => {
+        setPageStyle({display:"block"})
+    }
+    const getStyle = (val) => () => {
+        setPageStyle(val)
+    }
+    const handleRotate = () => {
+        setMenu(!menu);
+        if(menu) {
+            // transform: rotate(45deg);transition: transform 0.1s;
+            iconMenu.current.style = `transform:rotate(45deg);transition: transform 0.1s;`
+        }else {
+            iconMenu.current.style = `transform:rotate(0deg);transition: transform 0.1s;`
+        }
+    }
     const getSwiper = () => {
         new Swiper(".swiper-container", {
             autoplay: 3000,//可选选项，自动滑动
@@ -25,16 +71,49 @@ export default function Index() {
             Xscroll.current.style.transform = `translate(${pBar * 100}%)`
         }
     }
+    const handleTag = (url) => () => {
+        props.history.push(config.path+'home/index'+url)
+    }
+    const handleRecoStyle = () => {
+        switch(props.location.pathname) {
+            case config.path+"home/index/know":
+                setKnowStyle(true)
+                setHealthStyle(false)
+                setChildStyle(false)
+                setFurnStyle(false)
+                break;
+            case config.path+"home/index/health":
+                setKnowStyle(false)
+                setHealthStyle(true)
+                setChildStyle(false)
+                setFurnStyle(false)
+                break;
+            case config.path+"home/index/child":
+                setKnowStyle(false)
+                setHealthStyle(false)
+                setChildStyle(true)
+                setFurnStyle(false)
+                break;
+            case config.path+"home/index/furniture":
+                setKnowStyle(false)
+                setHealthStyle(false)
+                setChildStyle(false)
+                setFurnStyle(true)
+                break;
+            default:
+                break;
+        }
+    }
     return (
         <div className={Css['page']}>
-            <div className={Css['search-header']}>
+            <div className={Css['search-header']} ref={HScroll}>
                 <div className={Css['search-wrap']}>
                     <div className={Css['area']}><img src={require("../../../assets/images/home/index/togo.png")} alt="area" />南昌</div>
-                    <div className={Css['search-text']}><img src={require("../../../assets/images/home/index/search.png")} alt="search" />檫玻璃</div>
+                    <div className={Css['search-text']} onClick={changeSearch}><img src={require("../../../assets/images/home/index/search.png")} alt="search" />檫玻璃</div>
                 </div>
                 <div className={Css['menu-wrap']}>
-                    <div className={Css['menu-icon']} onClick={() => { setMenu(!menu) }}>
-                        <img src={require("../../../assets/images/home/index/addto.png")} alt="" />
+                    <div className={Css['menu-icon']} onClick={handleRotate}>
+                        <img ref={iconMenu} src={require("../../../assets/images/home/index/addto.png")} alt="" />
                     </div>
                     <ul className={menu ? Css['menu'] + " hide" : Css['menu']}>
                         <li><img src={require("../../../assets/images/home/index/help.png")} alt="" />帮助中心</li>
@@ -218,21 +297,21 @@ export default function Index() {
             <div className={Css['reco-wrap']}>
                 <div className={Css["reco-nav"]}>
                     <div className={Css['reco-level-wrap']}>
-                        <div className={Css['reco-level'] + " " + Css['active']}>
+                        <div className={know ? Css['reco-level'] + " " + Css['active'] : Css['reco-level']} onClick={handleTag('/know')}>
                             <div className={Css['title']}>生活百科</div>
                             <div className={Css['tag']}>爱生活</div>
                         </div>
-                        <div className={Css['reco-level']}>
-                            <div className={Css['title']}>生活百科</div>
-                            <div className={Css['tag']}>爱生活</div>
+                        <div className={health ? Css['reco-level'] + " " + Css['active'] : Css['reco-level']} onClick={handleTag('/health')}>
+                            <div className={Css['title']}>健康生活</div>
+                            <div className={Css['tag']}>关注健康</div>
                         </div>
-                        <div className={Css['reco-level']}>
-                            <div className={Css['title']}>生活百科</div>
-                            <div className={Css['tag']}>爱生活</div>
+                        <div className={child ? Css['reco-level'] + " " + Css['active'] : Css['reco-level']} onClick={handleTag('/child')}>
+                            <div className={Css['title']}>宝爸宝妈</div>
+                            <div className={Css['tag']}>育儿指南</div>
                         </div>
-                        <div className={Css['reco-level']}>
-                            <div className={Css['title']}>生活百科</div>
-                            <div className={Css['tag']}>爱生活</div>
+                        <div className={furniture ? Css['reco-level'] + " " + Css['active'] : Css['reco-level']} onClick={handleTag('/furniture')}>
+                            <div className={Css['title']}>家具改造</div>
+                            <div className={Css['tag']}>改造家</div>
                         </div>
                     </div>
                 </div>
@@ -347,6 +426,7 @@ export default function Index() {
                     </div>
                 </div>
             </div>
+            <Search pageStyle={pageStyle} childStyle={getStyle} />
         </div>
     )
 }
