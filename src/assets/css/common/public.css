@@ -4,10 +4,10 @@ input{outline: none;border-radius: 0px;border:0 none;}
 html,body {
     /*font-size: 20px!important;*/
     min-height: 100%;
-    overflow-x:hidden;
+    /* overflow-x:hidden; */
 	-webkit-tap-highlight-color:rgba(0,0,0,0);	/*禁止链接高亮*/ 	
 	-webkit-touch-callout:none;	/*禁止链接长按弹出选项*/
-    background-color:white;
+    background-color:#f5f5f9;
     line-height:normal !important;
 }
 .hide {display: none;}

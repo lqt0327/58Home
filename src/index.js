@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import RouterComponent from './router';
 import "./assets/css/common/public.css";
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import store from './store/reducers';
 
 function Index() {
   return (
     <React.Fragment>
-      <RouterComponent />
+      <Provider store={store} >
+        <RouterComponent />
+      </Provider>
     </React.Fragment>
   )
 }
