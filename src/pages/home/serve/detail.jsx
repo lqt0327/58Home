@@ -39,7 +39,8 @@ function Detail() {
     
     function Scroll(){
       // console.log(goodsBegin.current.getBoundingClientRect().top)
-      goodsBegin.current.getBoundingClientRect().top<42?setnavShow(navShow=1):setnavShow(navShow=0)
+      if(goodsBegin.current){
+        goodsBegin.current.getBoundingClientRect().top<42?setnavShow(navShow=1):setnavShow(navShow=0)
       let detailTop = goodsBegin.current.getBoundingClientRect().top
       if(detailTop>-551){
         setSelected(isSelected=1)
@@ -50,6 +51,8 @@ function Detail() {
       else{
         setSelected(isSelected=3)
       }
+      }
+      
     }
     // 监听滚动，如果有滚动，则隐藏nav
     window.addEventListener('scroll',Scroll)
@@ -74,7 +77,7 @@ let handleHidden = () => {
      <div className={standards_wrap===1?'wrap':''} onClick={handleHidden}></div>
       <Header headerData={headerData}/>
    <div className='toscroll'> 
-   <div className='content' ref={goodsBegin}>
+   <div className='contents' ref={goodsBegin}>
      <div className={navShow===1?'nav':'nav-hidden'}>
        {/* setSelected(isSelected=3); */}
        <div className={`goods nav-bar ${isSelected===1?'selected':''}`} onTouchStart={()=>{ scrollToAnchor(goodsBegin)}}>商品</div>

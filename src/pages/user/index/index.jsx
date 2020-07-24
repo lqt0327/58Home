@@ -1,15 +1,9 @@
 import React from 'react';
-import { Page, Top, Head } from './index.style';
-
+import { Link } from 'react-router-dom';
 export default function User(){
     return(
-        <Page>
-            <Top>
-                <img src={require("../../../assets/images/user/setting.png")} alt="设置"/>
-            </Top>
-            <Head>
-
-            </Head>
-        </Page>
+        <div>
+            <Link to='/user/newadress'>newAdress</Link>
+        </div>
     )
 }
