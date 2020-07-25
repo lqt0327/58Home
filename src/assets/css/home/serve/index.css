@@ -119,6 +119,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+
 .serveRight .pagesContent li .serveContent .serveItem .sItemWrapper{
     width: 32%;
     height: 2rem;
@@ -142,14 +143,15 @@
     font-size: 0.25rem;
     height: 0.7rem;
     line-height: 0.7rem;
+    color: black;
 }
 
-.active{
+.actives{
     color: red !important;
     background-color: white;
     position: relative;
 }
-.active::before{
+.actives::before{
     content: '';
     height: 0.34rem;
     width: 0.1rem;
@@ -160,4 +162,5 @@
     left: -.05rem;
     margin-top: .38rem;
 }
+
 

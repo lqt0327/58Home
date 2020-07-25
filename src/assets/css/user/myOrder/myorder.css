@@ -1,0 +1,227 @@
+.myOrderHeader{
+    display: flex;
+    justify-content: space-between;
+    width: 7.5rem;
+    height: 0.88rem;
+    align-items: center;
+    border: none;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    z-index: 99;
+}
+.myOrderHeader .orderHeaderLeft{
+    width: 0.4rem;
+    height: 0.4rem;
+    background: url(../../../images/common/back.png);
+    background-size: 100%;
+    margin-left: 0.3rem;
+}
+.myOrderHeader .orderHeaderTitle{
+    width: 3rem;
+    text-align: center;
+}
+.myOrderHeader .orderHeaderRight{
+    width: 0.4rem;
+    margin-right: 0.3rem;
+}
+.orderTab{
+    margin-top: 0.88rem;
+    width: 7.5rem;
+    height: 0.8rem;
+    display: flex;
+    justify-content: space-around;
+    /* background-color: chocolate; */
+    background-color: white;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+}
+.orderTabItem{
+    width: 1.3rem;
+    
+    text-align: center;
+}
+.orderTabItem span{
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: block;
+    height: 0.8rem;
+    width: 1rem;
+    line-height: 0.8rem;
+}
+.orderNavLink{
+    text-decoration: none;
+    color: black;
+}
+.orderNavLink.active{
+    color: red;
+    
+}
+.orderNavLink.active span{
+    border-bottom: 2px solid red;
+}
+
+.orderContent{
+    width: 7.5rem;
+    margin-top: 1.68rem;
+}
+.orderContent .null{
+    width: 7.5rem;
+    height: calc(100vh - 1.68rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    display: none;
+}
+.orderContent .null .nullImg{
+    width: 2.6rem;
+    height: 2.6rem;
+}
+.orderContent .null .nullImg img{
+    width: 100%;
+    height: 100%;
+}
+.orderContent .null h4{
+    display: block;
+    width: 7.5rem;
+    height: 2.6rem;
+    text-align: center;
+}
+
+.orderWrap{
+    width: 7.5rem;
+    /* display: none; */
+}
+.orderWrap .orderItem{
+    width: 7.5rem;
+    background-color: white;
+    margin-top: 0.2rem;
+}
+.orderWrap .orderItem:first-of-type{
+    margin-top: 1.88rem;
+}
+
+.orderWrap .orderItem .orderHeader{
+    width: 7.5rem;
+    height: 1rem;
+    /* background-color: tomato; */
+    display: flex;
+    justify-content: space-between;
+}
+.orderWrap .orderItem .orderHeader .orderShop{
+    padding-left: 0.3rem;
+    font-size: 0.28rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.orderWrap .orderItem .orderHeader .orderShop .shopIcon{
+    width: 0.4rem;
+    height: 0.4rem;
+    background-image: url(../../../../assets/images/user/shopIcon.png);
+    background-size: 100%;
+    display: inline-block;
+}
+.orderWrap .orderItem .orderHeader .orderShop .shopName{
+    display: inline-block;
+    line-height: 1rem;
+    margin-left: 0.2rem;
+}
+.orderWrap .orderItem .orderHeader .orderShop::after{
+    content: '>';
+    margin-left: 0.1rem;
+}
+.orderWrap .orderItem .orderHeader .orderState{
+    line-height: 1rem;
+    padding-right: 0.3rem;
+    color: red;
+    font-weight: 600;
+    font-size: 0.28rem;
+}
+.orderWrap .orderItem .orderMid{
+    width: 7.5rem;
+    height: 2.4rem;
+    /* background-color: rosybrown; */
+}
+.orderWrap .orderItem .orderMid .shopInfo{
+    width: 7.5rem;
+    height: 1.5rem;
+    /* background-color: seagreen; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.orderWrap .orderItem .orderMid .shopInfo .shopImg{
+    margin-left: 0.3rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    /* margin-top: 0.25rem; */
+}
+.orderWrap .orderItem .orderMid .shopInfo .shopImg img{
+    width: 100%;
+    height: 100%;
+}
+.orderWrap .orderItem .orderMid .shopInfo span{
+    width: 5.9rem;
+    margin-right: 0.3rem;
+    font-size: 0.32rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.orderWrap .orderItem .orderMid .orderAddress{
+    width: 7.5rem;
+    height: 0.9rem;
+}
+.orderWrap .orderItem .orderMid .orderAddress .orderTime,
+.orderWrap .orderItem .orderMid .orderAddress .oAddress{
+    margin-left: 0.3rem;
+    height: 0.45rem;
+    width: 6.5rem;
+    line-height: 0.45rem;
+    font-size: 0.28rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.orderWrap .orderItem .orderMoney{
+    width: 7.5rem;
+    padding: 0.2rem 0;
+    display: flex;
+    justify-content: flex-end;
+}
+.orderWrap .orderItem .orderMoney .payMoney{
+    margin-right: 0.3rem;
+    font-size: 0.26rem;
+    color: black;
+    font-weight: 600;
+}
+.orderWrap .orderItem .orderMoney .payMoney span{
+    color: red;
+    font-size: 0.36rem;
+    font-weight: 500;
+}
+.orderWrap .orderItem .orderBtn{
+    width: 7.5rem;
+    height: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.orderWrap .orderItem .orderBtn .goPay{
+    width: 1.5rem;
+    height: 0.5rem;
+    margin-right: 0.3rem;
+    color: red;
+    text-align: center;
+    line-height: 0.5rem;
+    border: 1px solid red;
+    border-radius: 0.1rem;
+    font-size: 0.28rem;
+}

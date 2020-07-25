@@ -1,5 +1,6 @@
 import React from 'react';
 import { Page, Top, Head, HeadItem, MyOrder, MyNeed, Tool } from './index.style';
+import { Link } from 'react-router-dom';
 
 export default function User() {
     return (
@@ -35,7 +36,8 @@ export default function User() {
             <MyOrder>
                 <div className="head-order-wrap">
                     <h4>我的订单</h4>
-                    <div>查看全部 &gt;</div>
+                    
+                    <div><Link to='/user/myorder' style={{ textDecoration:'none', color: 'black'}}>查看全部 &gt;</Link></div>
                 </div>
                 <div className="order-item-wrap">
                     <div className="item-wrap">

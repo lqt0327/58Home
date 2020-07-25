@@ -4,6 +4,7 @@ import data from './serve.json';
 import '../../../assets/css/home/serve/index.css';
 import searchImg from '../../../assets/images/home/serve/search.png';
 import addImg from '../../../assets/images/home/serve/add.png';
+import { Link } from 'react-router-dom';
 // import LazyLoad from 'react-lazyload';
 
 
@@ -78,7 +79,7 @@ export default function Serve() {
                         {
                             data.map((item, i) => {
                                 return (
-                                    <li className={`${isActive === i + 1 ? 'active' : ''}`} onClick={() => {
+                                    <li className={`${isActive === i + 1 ? 'actives' : ''}`} onClick={() => {
                                         setActive(isActive = i + 1)
                                         scrollToAnthor(`${i + 1}`)
                                     }} key={i}
@@ -104,13 +105,16 @@ export default function Serve() {
                                             <div className="serveItem">
                                                 {item.content.serveItem.map((sItem, j) => {
                                                     return (
+                                                        
                                                         <div className="sItemWrapper" key={j}>
                                                             <div className="sItemImg">
-                                                                
+                                                            <Link to="/serve/detail" style={{ textDecoration:'none'}}>
                                                                 <img src={sItem.itemImg} alt="" />
-                                                                
+                                                            </Link>    
                                                             </div>
+                                                            <Link to="/serve/detail" style={{ textDecoration:'none'}}>
                                                             <span className="sItemName">{sItem.itemName}</span>
+                                                            </Link> 
                                                         </div>
                                                     )
                                                 })}
