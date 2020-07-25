@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, lazy } from 'react';
 import BScroll from 'better-scroll';
 import data from './serve.json';
 import '../../../assets/css/home/serve/index.css';
@@ -106,9 +106,9 @@ export default function Serve() {
                                                     return (
                                                         <div className="sItemWrapper" key={j}>
                                                             <div className="sItemImg">
-                                                                {/* <LazyLoad> */}
+                                                                
                                                                 <img src={sItem.itemImg} alt="" />
-                                                                {/* </LazyLoad> */}
+                                                                
                                                             </div>
                                                             <span className="sItemName">{sItem.itemName}</span>
                                                         </div>
