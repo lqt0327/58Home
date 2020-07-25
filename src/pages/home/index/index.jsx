@@ -4,18 +4,20 @@ import Swiper from '../../../assets/js/utils/swiper.min.js';
 import '../../../assets/js/utils/swiper.min.css';
 import config from '../../../assets/js/conf/config';
 import Search from '../../../components/search/search';
+import BScroll from 'better-scroll';
 
 export default function Index(props) {
     const [menu, setMenu] = useState(true);
-    const [know,setKnowStyle] = useState(true);
-    const [health,setHealthStyle] = useState(false);
-    const [child,setChildStyle] = useState(false);
-    const [furniture,setFurnStyle] = useState(false);
+    const [know, setKnowStyle] = useState(true);
+    const [health, setHealthStyle] = useState(false);
+    const [child, setChildStyle] = useState(false);
+    const [furniture, setFurnStyle] = useState(false);
 
-    const [pageStyle, setPageStyle] = useState({display:"none"})
+    const [pageStyle, setPageStyle] = useState({ display: "none" })
 
-    const [bScroll,setBScroll] = useState(false);
+    const [bScroll, setBScroll] = useState(false);
 
+    const pageScroll = useRef();
     const pScroll = useRef(null);
     const Xscroll = useRef(null);
     const HScroll = useRef();
@@ -25,11 +27,22 @@ export default function Index(props) {
         getSwiper();
         handleScroll();
         handleRecoStyle();
-        window.addEventListener("scroll",eventScroll,false);
-        return ()=>{
-            window.removeEventListener("scroll",eventScroll);
+        window.addEventListener("scroll", eventScroll, false);
+
+        // const scroll = new BScroll(pageScroll.current,{
+        //     probeType:1,
+        //     click:true,
+        //     pullDownRefresh: true
+        // })
+        // setTimeout(()=>{
+        //     scroll && scroll.refresh();
+        // },20)
+        
+        return () => {
+            window.removeEventListener("scroll", eventScroll);
         }
     })
+
     const eventScroll = () => {
         let scrollTop = document.documentElement.scrollTop;
         let opcity = (scrollTop / 100) > 1 ? 1 : (scrollTop / 100);
@@ -43,17 +56,17 @@ export default function Index(props) {
     //     },300)
     // }
     const changeSearch = () => {
-        setPageStyle({display:"block"})
+        setPageStyle({ display: "block" })
     }
     const getStyle = (val) => () => {
         setPageStyle(val)
     }
     const handleRotate = () => {
         setMenu(!menu);
-        if(menu) {
+        if (menu) {
             // transform: rotate(45deg);transition: transform 0.1s;
             iconMenu.current.style = `transform:rotate(45deg);transition: transform 0.1s;`
-        }else {
+        } else {
             iconMenu.current.style = `transform:rotate(0deg);transition: transform 0.1s;`
         }
     }
@@ -61,6 +74,7 @@ export default function Index(props) {
         new Swiper(".swiper-container", {
             autoplay: 3000,//可选选项，自动滑动
             pagination: '.swiper-pagination',
+            paginationClickable: true,
             autoplayDisableOnInteraction: false
         })
     }
@@ -72,29 +86,29 @@ export default function Index(props) {
         }
     }
     const handleTag = (url) => () => {
-        props.history.push(config.path+'home/index'+url)
+        props.history.push(config.path + 'home/index' + url)
     }
     const handleRecoStyle = () => {
-        switch(props.location.pathname) {
-            case config.path+"home/index/know":
+        switch (props.location.pathname) {
+            case config.path + "home/index/know":
                 setKnowStyle(true)
                 setHealthStyle(false)
                 setChildStyle(false)
                 setFurnStyle(false)
                 break;
-            case config.path+"home/index/health":
+            case config.path + "home/index/health":
                 setKnowStyle(false)
                 setHealthStyle(true)
                 setChildStyle(false)
                 setFurnStyle(false)
                 break;
-            case config.path+"home/index/child":
+            case config.path + "home/index/child":
                 setKnowStyle(false)
                 setHealthStyle(false)
                 setChildStyle(true)
                 setFurnStyle(false)
                 break;
-            case config.path+"home/index/furniture":
+            case config.path + "home/index/furniture":
                 setKnowStyle(false)
                 setHealthStyle(false)
                 setChildStyle(false)
@@ -104,8 +118,12 @@ export default function Index(props) {
                 break;
         }
     }
+    const goPage = (url) => () => {
+        props.history.push(config.path + url);
+        document.documentElement.scrollTop = 0;
+    }
     return (
-        <div className={Css['page']}>
+        <div className={Css['page']} ref={pageScroll}>
             <div className={Css['search-header']} ref={HScroll}>
                 <div className={Css['search-wrap']}>
                     <div className={Css['area']}><img src={require("../../../assets/images/home/index/togo.png")} alt="area" />南昌</div>
@@ -123,8 +141,8 @@ export default function Index(props) {
                 </div>
             </div>
             <div className={Css['banner-wrap']}>
-                <div className="swiper-container">
-                    <div className="swiper-wrapper">
+                <div className="swiper-container banner">
+                    <div className="swiper-wrapper" style={{ height: '3.66rem' }}>
                         <div className="swiper-slide"><img src={require("../../../assets/images/home/index/banner_1.jpg")} alt="" /></div>
                         <div className="swiper-slide"><img src={require("../../../assets/images/home/index/banner_2.jpg")} alt="" /></div>
                         <div className="swiper-slide"><img src={require("../../../assets/images/home/index/banner_3.jpg")} alt="" /></div>
@@ -138,11 +156,11 @@ export default function Index(props) {
                         new Array(10).fill(0).map((item, index) => {
                             return (
                                 <div className={Css['item-wrap']} key={index}>
-                                    <div className={Css['item-top']}>
+                                    <div className={Css['item-top']} onClick={goPage('serve/detail')}>
                                         <img src={require("../../../assets/images/home/index/quickNav1.png")} alt="" className={Css['item-img']} />
                                         <p className={Css['item-text']}>日常保洁</p>
                                     </div>
-                                    <div className={Css['item-bottom']}>
+                                    <div className={Css['item-bottom']} onClick={goPage('serve/detail')}>
                                         <img src={require("../../../assets/images/home/index/quickNav1.png")} alt="" className={Css['item-img']} />
                                         <p className={Css['item-text']}>日常保洁</p>
                                     </div>
@@ -158,16 +176,16 @@ export default function Index(props) {
                 </div>
             </div>
             <div className={Css['goods-level-wrap']}>
-                <div className={Css['goods-item']}>
+                <div className={Css['goods-item']} onClick={goPage('serve/detail')}>
                     <img src={require("../../../assets/images/home/index/goods1.jpg")} alt="" />
                 </div>
-                <div className={Css['goods-item']}>
+                <div className={Css['goods-item']} onClick={goPage('serve/detail')}>
                     <img src={require("../../../assets/images/home/index/goods2.jpg")} alt="" />
                 </div>
-                <div className={Css['goods-item']}>
+                <div className={Css['goods-item']} onClick={goPage('serve/detail')}>
                     <img src={require("../../../assets/images/home/index/goods1.jpg")} alt="" />
                 </div>
-                <div className={Css['goods-item']}>
+                <div className={Css['goods-item']} onClick={goPage('serve/detail')}>
                     <img src={require("../../../assets/images/home/index/goods2.jpg")} alt="" />
                 </div>
             </div>
@@ -182,36 +200,18 @@ export default function Index(props) {
                     </div>
                 </div>
                 <div className={Css['family-list-wrap']}>
-                    <div className={Css['family-list']}>
-                        <div className={Css['images']}><img src={require("../../../assets/images/home/index/family1.jpg")} alt="" /></div>
-                        <div className={Css['title']}>
-                            电脑维修
-                        </div>
-                    </div>
-                    <div className={Css['family-list']}>
-                        <div className={Css['images']}><img src={require("../../../assets/images/home/index/family1.jpg")} alt="" /></div>
-                        <div className={Css['title']}>
-                            电脑维修
-                        </div>
-                    </div>
-                    <div className={Css['family-list']}>
-                        <div className={Css['images']}><img src={require("../../../assets/images/home/index/family1.jpg")} alt="" /></div>
-                        <div className={Css['title']}>
-                            电脑维修
-                        </div>
-                    </div>
-                    <div className={Css['family-list']}>
-                        <div className={Css['images']}><img src={require("../../../assets/images/home/index/family1.jpg")} alt="" /></div>
-                        <div className={Css['title']}>
-                            电脑维修
-                        </div>
-                    </div>
-                    <div className={Css['family-list']}>
-                        <div className={Css['images']}><img src={require("../../../assets/images/home/index/family1.jpg")} alt="" /></div>
-                        <div className={Css['title']}>
-                            电脑维修
-                        </div>
-                    </div>
+                    {
+                        new Array(5).fill(0).map((item, index) => {
+                            return (
+                                <div className={Css['family-list']} onClick={goPage('serve/detail')} key={index}>
+                                    <div className={Css['images']}><img src={require("../../../assets/images/home/index/family1.jpg")} alt="" /></div>
+                                    <div className={Css['title']}>
+                                        电脑维修
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
             <div className={Css['discount-wrap']}>
@@ -220,33 +220,33 @@ export default function Index(props) {
                     <div className={Css['icon']}>热销榜</div>
                 </div>
                 <div className={Css['discount-goods-wrap']}>
-                    <div className={Css['discount-goods']}>
+                    <div className={Css['discount-goods']} onClick={goPage('serve/detail')}>
                         <img src={require("../../../assets/images/home/index/goods1.jpg")} alt="" />
                     </div>
-                    <div className={Css['discount-goods']}>
+                    <div className={Css['discount-goods']} onClick={goPage('serve/detail')}>
                         <img src={require("../../../assets/images/home/index/goods2.jpg")} alt="" />
                     </div>
-                    <div className={Css['discount-goods']}>
+                    <div className={Css['discount-goods']} onClick={goPage('serve/detail')}>
                         <img src={require("../../../assets/images/home/index/goods1.jpg")} alt="" />
                     </div>
-                    <div className={Css['discount-goods']}>
+                    <div className={Css['discount-goods']} onClick={goPage('serve/detail')}>
                         <img src={require("../../../assets/images/home/index/goods2.jpg")} alt="" />
                     </div>
                 </div>
                 <div className={Css['discount-level-wrap']}>
-                    <div className={Css['discount-level']}>
+                    <div className={Css['discount-level']} onClick={goPage('serve/detail')}>
                         <p>生活好物</p>
                         <img src={require("../../../assets/images/home/index/discount1.jpg")} alt="" />
                     </div>
-                    <div className={Css['discount-level']}>
+                    <div className={Css['discount-level']} onClick={goPage('serve/detail')}>
                         <p>生活好物</p>
                         <img src={require("../../../assets/images/home/index/discount1.jpg")} alt="" />
                     </div>
-                    <div className={Css['discount-level']}>
+                    <div className={Css['discount-level']} onClick={goPage('serve/detail')}>
                         <p>生活好物</p>
                         <img src={require("../../../assets/images/home/index/discount1.jpg")} alt="" />
                     </div>
-                    <div className={Css['discount-level']}>
+                    <div className={Css['discount-level']} onClick={goPage('serve/detail')}>
                         <p>生活好物</p>
                         <img src={require("../../../assets/images/home/index/discount1.jpg")} alt="" />
                     </div>
@@ -261,36 +261,17 @@ export default function Index(props) {
                     </div>
                     <div className={Css['serve-item-wrap']}>
                         <div className={Css['serve-item']}>
-                            <div className={Css['item-wrap']}>
-                                <img src={require("../../../assets/images/home/index/phone.jpg")} alt="" />
-                                <p>手机修理</p>
-                            </div>
-                            <div className={Css['item-wrap']}>
-                                <img src={require("../../../assets/images/home/index/phone.jpg")} alt="" />
-                                <p>手机修理</p>
-                            </div>
-                            <div className={Css['item-wrap']}>
-                                <img src={require("../../../assets/images/home/index/phone.jpg")} alt="" />
-                                <p>手机修理</p>
-                            </div>
-                            <div className={Css['item-wrap']}>
-                                <img src={require("../../../assets/images/home/index/phone.jpg")} alt="" />
-                                <p>手机修理</p>
-                            </div>
-                            <div className={Css['item-wrap']}>
-                                <img src={require("../../../assets/images/home/index/phone.jpg")} alt="" />
-                                <p>手机修理</p>
-                            </div>
-                            <div className={Css['item-wrap']}>
-                                <img src={require("../../../assets/images/home/index/phone.jpg")} alt="" />
-                                <p>手机修理</p>
-                            </div>
-                            <div className={Css['item-wrap']}>
-                                <img src={require("../../../assets/images/home/index/phone.jpg")} alt="" />
-                                <p>手机修理</p>
-                            </div>
+                            {
+                                new Array(7).fill(0).map((item,index) => {
+                                    return (
+                                        <div className={Css['item-wrap']} key={index} onClick={goPage('serve/detail')}>
+                                            <img src={require("../../../assets/images/home/index/phone.jpg")} alt="" />
+                                            <p>手机修理</p>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
-
                     </div>
                 </div>
             </div>
