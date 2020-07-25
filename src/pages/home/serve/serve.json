@@ -1,0 +1,346 @@
+[
+    {
+        "name": "热门",
+        "id": 1,
+        "content":{
+            "title": "热门",
+            "topImg": "https://images.daojia.com/dop/custom/9ae5199ea57920870ee5fd1a215ab9d6.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/ccd022a3ccdefee72bc10b42520ab686.png",
+                    "itemName": "空调清洗"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/bf9b04deecfe23791d5d05587aab76e0.png",
+                    "itemName": "中央空调清洗"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/f706f13e33eaf2a04a2002f64d1a923c.png",
+                    "itemName": "洗油烟机"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "除菌保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/6e09aaa12982a47d5ae1b4f25c63b7fb.png",
+                    "itemName": "母乳指导"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/5642d353932d4472ea7d91280d66309a.png",
+                    "itemName": "搬家"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/4dc1c52d84a437f62c4044ceee2d37ea.png",
+                    "itemName": "擦玻璃"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/aab2c1ed7be30a74193e27154432799a.png",
+                    "itemName": "iphone维修"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/af7d16e1a8973129b9e9bf313702f0dd.png",
+                    "itemName": "修洗衣机"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/b0840f81e1e5061a262edf2e2141428c.png",
+                    "itemName": "顺丰"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/8c51e264d7c54c8f7e5bf81abd8f6c36.png",
+                    "itemName": "同城货运"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/9852a8fbee19f2dbaf40ffafaffefd6c.png",
+                    "itemName": "企业服务"
+                }
+            ]
+        }
+    },
+    {
+        "name": "保洁清洗",
+        "id": 2,
+        "content":{
+            "title": "保洁清洗",
+            "topImg": "https://static.daojia.com/assets/project/dj-weapp/images/headImg/baojie.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "保姆月嫂",
+        "id": 3,
+        "content":{
+            "title": "保姆月嫂",
+            "topImg": "https://static.daojia.com/assets/project/dj-weapp/images/headImg/bmys.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "搬家",
+        "id": 4,
+        "content":{
+            "title": "搬家",
+            "topImg": "https://static.daojia.com/assets/project/dj-weapp/images/headImg/hybj.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "房屋维修",
+        "id": 5,
+        "content":{
+            "title": "房屋维修",
+            "topImg": "https://images.daojia.com/dop/custom/e4633a332e8b9c7170f5f3bd61fe2287.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "家电维修",
+        "id": 6,
+        "content":{
+            "title": "家电维修",
+            "topImg": "https://images.daojia.com/dop/custom/ec67e08bfc666daf11af96d210d8820d.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "数码维修",
+        "id": 7,
+        "content":{
+            "title": "数码维修",
+            "topImg": "https://images.daojia.com/dop/custom/955139325f17a76b635437be08e7ee60.jpg",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "上门安装",
+        "id": 8,
+        "content":{
+            "title": "上门安装",
+            "topImg": "https://images.daojia.com/dop/custom/8c563d4d0a42a4317ba381fa536cfda8.jpg",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "鲜花美食",
+        "id": 9,
+        "content":{
+            "title": "鲜花美食",
+            "topImg": "https://images.daojia.com/dop/custom/c116de8f85f2c9f22c4e1e88eb66eb38.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "丽人",
+        "id": 10,
+        "content":{
+            "title": "丽人",
+            "topImg": "https://images.daojia.com/dop/custom/c1b2ee2611cd859cc77897906cee8e18.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "家庭洗护",
+        "id": 11,
+        "content":{
+            "title": "家庭洗护",
+            "topImg": "https://images.daojia.com/dop/custom/3cbabe588d628d1bde5d377d66dd02e9.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    },
+    {
+        "name": "便民服务",
+        "id": 12,
+        "content":{
+            "title": "便民服务",
+            "topImg": "https://images.daojia.com/dop/custom/f23cbd19d8b8c1d1d9db82642da8de5b.png",
+            "serveItem": [
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/3d1fa4cac2b9ca14b0cecde02828da6a.png",
+                    "itemName": "日常保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/de83b856b829d9aa5a239b20e43d024e.png",
+                    "itemName": "周期保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/dop/custom/90c8e912677c6137f1147804967486ff.png",
+                    "itemName": "深度保洁"
+                },
+                {
+                    "itemImg": "https://images.daojia.com/operations/jz/banner/%E5%B1%85%E5%AE%B6%E6%B6%88%E6%AF%92%E7%83%AD%E9%97%A8%E6%9C%8D%E5%8A%A1%E5%9B%BE%E6%A0%87.png",
+                    "itemName": "居家消毒"
+                }
+            ]
+        }
+    }
+]
