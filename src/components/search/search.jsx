@@ -2,11 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Page, Head, SearchInput, Top, History, Hot } from './search.style';
 import { connect } from 'react-redux';
 import action from '../../store/actions';
-import PropTypes from 'prop-types';
 import config from '../../assets/js/conf/config';
 import { withRouter } from 'react-router';
 
 function Search(props) {
+    console.log(props)
     const search = useRef()
     const [bTop, setBTop] = useState(true);
     const [hKeywords, setHKeywords] = useState();
@@ -20,7 +20,7 @@ function Search(props) {
         } else {
             setBHistory(false);
         }
-    }, [])
+    },[Hkeywords.length])
     const goPage = (url, keywords) => () => {
         console.log(url);
         props.history.push(config.path + url);
@@ -63,7 +63,7 @@ function Search(props) {
             <History className={bHistory ? "" : "hide"}>
                 <div className="nav-wrap">
                     <div className="title">历史搜索</div>
-                    <div className="icon" onClick={clearHK}><img src={require("../../assets/images/common/bin.png")} /></div>
+                    <div className="icon" onClick={clearHK}><img src={require("../../assets/images/common/bin.png")} alt="" /></div>
                 </div>
                 <div className="historyKey-wrap">
                     {
