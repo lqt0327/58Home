@@ -4,22 +4,41 @@ import '../../../assets/js/utils/swiper.css'
 import '../../../assets/css/home/serve/detail.css'
 import Header from '../../../components/header/header'
 import datas from './detail.json'
-import NewAdress from '../../user/adress/newAdress'
 import { useRef } from 'react';
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import action from '../../../store/actions/'
 let standardsData = [
   {title:'油烟机免拆洗',
-   price:'￥149/台'},
+   price:149,
+   count:0,
+  },
   {title:'油烟机拆洗',
-   price:'￥180/台'},
+   price:180,
+   count:0,},
   {title:'油烟机+灶台拆洗',
-   price:'￥220/台'},
+   price:220,
+   count:0,},
 ]
 let headerData = {
   title:'油烟机清洗',
   share: 1
 }
-function Detail() {
+// let adressData = JSON.parse(localStorage.getItem('adressData')) || []
+
+function Detail(props) {
+  console.log(props)
+  let {adress,number,name,tel} = props.state
+  let [countdata,setcountdata] = useState(standardsData)
+  useEffect(() => {
+    props.dispatch(action.detail.addDetailInfo(countdata))
+  }, [countdata]) 
+  let {detaildata} = props
+  console.log(detaildata)
+  // 判断是否有点击服务
+  let [sumCount,setSumCount] = useState(0)
+  let [isCount,setCount] = useState(false)
+//  console.log(countdata)
   // 是否选择伪类
   let [isSelected,setSelected] = useState(1)
   // 三个锚链接
@@ -29,6 +48,8 @@ function Detail() {
 
   let [standards_wrap,setStandards_wrap]=useState(0)
   let [navShow,setnavShow] = useState(0)
+
+  let [serveInfoshow,setServeInfoshow] = useState(0)
   // swiper 必备
   useEffect(()=>{
    let s =  new Swiper('.swiper-container', {
@@ -39,6 +60,7 @@ function Detail() {
     
     function Scroll(){
       // console.log(goodsBegin.current.getBoundingClientRect().top)
+     
       if(goodsBegin.current){
         goodsBegin.current.getBoundingClientRect().top<42?setnavShow(navShow=1):setnavShow(navShow=0)
       let detailTop = goodsBegin.current.getBoundingClientRect().top
@@ -70,11 +92,31 @@ setStandards_wrap(standards_wrap=1)
 }
 let handleHidden = () => {
   setStandards_wrap(standards_wrap=0)
+  setServeInfoshow(serveInfoshow=0)
+}
+let handleisCount = () =>{
+  console.log(sumCount)
+  if(sumCount>0){
+    setCount(isCount=true)
+  }
+}
+// 点击立即购买时应该选择展示什么
+let handleSelectToShow =() => {
+  if(props.state.adress===''){
+    props.history.push('/user/newadress')
+  }
+  else if(sumCount===0){
+    setStandards_wrap(standards_wrap=1)
+  }
+  else{
+    setServeInfoshow(serveInfoshow=1)
+  }
 }
   return (
+  
    <div className='bigwrap'>
-
-     <div className={standards_wrap===1?'wrap':''} onClick={handleHidden}></div>
+      {/* 整个页面是否有暗黑色系 */}
+     <div className={`${standards_wrap===1 || serveInfoshow===1?'wrap':''}`} onClick={handleHidden}></div>
       <Header headerData={headerData}/>
    <div className='toscroll'> 
    <div className='contents' ref={goodsBegin}>
@@ -114,13 +156,26 @@ let handleHidden = () => {
    </div>
    <div className="adress-wrap">
      <div className="adress-item">
+       
        <div className='adress-item-title'>地址</div>
-       <div className='adress-item-input-wrap'><input type="text" placeholder='请选择服务地址' className='adress-item-input' readOnly /></div>
+       <Link to='/user/newadress' style={{textDecoration:'none', color:'#000'}} className="linkToNewAdress">
+       {adress===''?<input type="text" placeholder='请选择服务地址' className='adress-item-input' value={props.state.name} readOnly />
+      :<div style={{fontSize:'12px'}}><span>{adress}</span>&nbsp;<span>{number}</span><br/>
+      <span>{name}</span>&nbsp;<span>{tel}</span></div>}
+       </Link>
        <div className='adress-item-logo'><img src={require("../../../assets/images/common/goto.png")} className="adress-img"/></div>
+       
      </div>
      <div className="adress-item" onClick={handleShow}>
        <div className='adress-item-title'>规格</div>
-       <div className='adress-item-input-wrap'><input type="text" placeholder='请选择服务规格' className='adress-item-input' readOnly/></div>
+       <div className='adress-item-input-wrap'>
+         
+         {!isCount?<input type="text" placeholder='请选择服务规格' className='adress-item-input'  readOnly/>:
+         standardsData.map((item,i)=>{
+          return item.count===0?'':<div key={i}>{`${countdata[i].title} (${countdata[i].count}台)`}</div>
+         })}
+
+         </div>
        <div className='adress-item-logo'><img src={require("../../../assets/images/common/goto.png")} className="adress-img"/></div>
      </div>
      <div className="adress-item">
@@ -131,7 +186,7 @@ let handleHidden = () => {
    </div>
    <div className="detail" id='abc' ref={goodsDetail}>
      <div className="detail-header"  >
-     <div className="detail-header-text"   >详情</div>
+     <div className="detail-header-text">详情</div>
        <div className="detail-header-line"></div>
      </div>
      <div className="detail-img-wrap" >
@@ -147,6 +202,7 @@ let handleHidden = () => {
      </div>
     <div className="recommends-content">
       <ul className='recommends-item-wrap'>
+        {/* 弹出框 */}
         {datas.map((item,i)=>{
         return (<li className='recommends-item' key={i}>
         <img className='recommends-item-img' src={require('../../../assets/images/home/serve/recommend/wash3.jpg')} alt=""/>
@@ -166,12 +222,13 @@ let handleHidden = () => {
         <img src={require('../../../assets/images/home/serve/recommend/cstSv.png')} alt="" className="bottom-left-img"/>
         <div className="bottom-left-text">客服</div>
       </div>
-      <div className="bottom-right">
+      <div className="bottom-right" onClick={handleSelectToShow}>
         <input type="button" className="bottom-right-btn" value='立即购买'/>
       </div>
     </div>
 
   </div>
+  {/* 弹出购买数量信息 */}
   <div className={`standards-wrap ${standards_wrap===1?'standards-wrap-add':''}`} >
     <div className="standards-header">
       <div className="standards-header-title">请选择服务规格</div>
@@ -187,23 +244,91 @@ let handleHidden = () => {
           <img src={require('../../../assets/images/common/cancel.png')} alt="" className="standards-body-left-logo"/>
           <div className="standards-content">
           <h4>{item.title}</h4>
-          <p>{item.price}</p>
+          <p>￥{item.price}/台</p>
           </div>
           <div className="standards-count-wrap">
-            <div><img className='standards-minus' src={require('../../../assets/images/common/minus.png')} alt=""/></div>
-            <p className="standards-count">0</p>
-            <div><img className='standards-add' src={require('../../../assets/images/common/add.png')} alt=""/></div>
+            <div onClick={(e)=>{
+              let state = {
+                ...countdata
+              }
+              if(state[i].count>0) {state[i].count--
+              setSumCount(sumCount-=1)
+              setcountdata(state)}
+            }}><img className='standards-minus' src={require('../../../assets/images/common/minus.png')} alt=""/></div>
+            <p className="standards-count">{countdata[i].count}</p>
+            <div onClick={()=>{
+              let state = {
+                ...countdata
+              }
+              state[i].count++
+              setSumCount(sumCount+=1)
+              setcountdata(state)
+            }}><img className='standards-add' src={require('../../../assets/images/common/add.png')} alt=""/></div>
           </div>
         </li>
         })}
       </ul>
     </div>
-    <div className="standards-bottom-wrap">
+    <div className="standards-bottom-wrap" onClick={()=>{handleHidden();handleisCount()}}>
         <input type="button" className="standards-button" value='确定'/>
+    </div>
+  </div>
+  {/* 弹出服务信息 */}
+  <div className={`serveInfo-wrap ${serveInfoshow===1?'serveInfo-wrap-add':''}`} >
+      <div className="serveInfo-title-wrap">
+      <div className="serveInfo-title">请填写服务信息</div>
+      <img src={require('../../../assets/images/common/cancel.png')} alt="" className="serveInfo-icon" onClick={handleHidden}/>
+      </div>
+      <Link to='/user/newadress' style={{textDecoration:'none', color:'#000'}} className="linkToNewAdress">
+      <div className='serveInfo-adress'>
+        <div className="serveInfo-location">
+          <img src={require('../../../assets/images/home/serve/recommend/location.png')} alt="" className="serveInfo-location-icon"/>
+        </div>
+      <div className='serveInfo-location-adress'><span style={{fontWeight:'550'}}>{adress}</span>&nbsp;<span style={{fontWeight:'550'}}>{number}</span><br/>
+      <span style={{fontSize:'14px'}}>{name}</span>&nbsp;<span style={{fontSize:'14px'}}>{tel}</span></div>
+      <div className='serveInfo-go-wrap'><img src={require("../../../assets/images/common/goto.png")} className="serveinfo-icon-go"/></div>
+      </div>
+      </Link>
+      <div className="colorful-line">
+        {
+          new Array(20).fill(0).map((item,i)=>{
+            return (
+             <div key={i}>
+               {i%2===0?<p className="colorful1"></p>: <p className="colorful2"></p>}
+             </div>
+            )
+          })
+        }
+      </div>
+      <div className="serveInfo-standards">
+        <div className="serveInfo-left">服务规格</div>
+        <div className="serveInfo-center">
+          {standardsData.map((item,i)=>{
+          return <div key={i}>{`${countdata[i].title} (${countdata[i].count}台)`}</div>
+         })}</div>
+         <div className="serveInfo-right">
+        <img src={require("../../../assets/images/common/goto.png")} className="serveInfo-right-icon"/>
+         </div>
+      </div>
+      <div className="reminder">
+        <p>温馨提示:<br/>
+          58到家是服务平台，暂不支持开具发票，如有需要请与劳动
+          者协商。<br/>
+          持到家悠享卡用户，到家将提供自营服务，因在售卡时已开具
+          发票，持卡消费则不再提供发票。
+        </p>
+      </div>
+      <div className="serInfo-bottom-wrap" >
+        <input type="button" className="serveInfo-button" value='确定'/>
     </div>
   </div>
    </div>
   )
 }
 
-export default Detail
+export default connect(state => {
+  return {
+      state:state.ad,
+      detaildata: state.detail
+  }
+})(Detail);
