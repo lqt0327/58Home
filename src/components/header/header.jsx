@@ -4,11 +4,13 @@ import imgURL from '../../assets/images/common/back.png'
 import { useEffect } from 'react';
 
 function Header(props) {
+  // console.log(window.history)
   let [isShare,setShare]=useState(1)
   let {title, share} = props.headerData
   useEffect(()=>{
     setShare(isShare=share)
   },[])
+  // console.log(imgURL)
   return (
     <div className='header' >
     <div className="left-wrap" onClick={()=>window.history.back()} >

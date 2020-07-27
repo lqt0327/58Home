@@ -18,7 +18,7 @@
 .search-header .menu-wrap .menu::before {content: '';border-right: 0.15rem solid transparent;border-left: 0.15rem solid transparent;border-bottom: 0.15rem solid #ffffff;position: absolute;top:-.1rem;right: 0.03rem;}
 
 .banner-wrap{width:100vw;height:3.66rem;}
-.banner-wrap img{width:100%;height:100%}
+.banner-wrap img{width:100vw;height:3.66rem;}
 
 .quick-nav {width: 100vw;height: 3.72rem;background-color: #ffffff;margin-top: 0.1rem;}
 .quick-wrap {display: flex;flex-direction: row;height: 3.12rem;width: 100%;overflow-x: auto;}
