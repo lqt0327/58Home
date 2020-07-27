@@ -143,6 +143,10 @@
   font-weight: 550;
   margin-right: 0.2rem;
 }
+.linkToNewAdress{
+  border-bottom: 0.02rem solid #e4e9ea;
+  flex: 1;
+}
 .adress-item-input-wrap {
   border-bottom: 0.02rem solid #e4e9ea;
   flex: 1;
@@ -348,7 +352,6 @@
   align-items: center;
 }
 .standards-bottom-wrap{
- 
  padding: 0.2rem;
 }
 .standards-button{
@@ -358,3 +361,113 @@
   border-radius: 0.06rem;
   color: #fff;
 }
+/* 结算信息弹出框 */
+.serveInfo-wrap {
+  position: fixed;
+  background-color: #fff;
+  bottom: -6rem;
+  left: 0.2rem;
+  right: 0.2rem;
+  border-radius: 0.1rem;
+  z-index: 8;
+  height: 6rem;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+.serveInfo-wrap-add{
+  bottom: 0;
+}
+.serveInfo-title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.02rem solid #efefef;
+  font-size: 0.3rem;
+  font-weight: 550;
+  padding: 0.2rem;
+  border-radius: 0.1rem;
+}
+.serveInfo-title-wrap img {
+  width: 12px;
+}
+.serveInfo-adress{
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 10px;
+}
+.serveInfo-location{
+ align-self: start;
+  margin-right: 5px;
+}
+.serveInfo-location img {
+  width: 12px;
+}
+
+.serveInfo-location-adress{
+  
+}
+.serveInfo-go-wrap img {
+  width: 12px;
+  position: absolute;
+  right: 10px;
+}
+
+.colorful-line{
+  display: flex;
+  transform: skew(-40deg,0deg);
+  white-space: nowrap;
+  margin-left: -6px;
+}
+.colorful-line div{
+  display: flex;
+  white-space: nowrap;
+}
+.colorful-line p{
+  width: 20px;
+  height: 4px;
+}
+.colorful-line .colorful1{
+  background-color: rgb(101, 101, 235);
+  margin-right: 10px;
+}
+.colorful-line .colorful2{
+  background-color: rgb(238, 109, 120);
+  margin-right: 10px;
+}
+.serveInfo-standards{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+}
+.serveInfo-left{
+  font-weight: 550;
+}
+.serveInfo-center{
+  font-size: 12px;
+}
+.serveInfo-right-icon{
+  width: 12px;
+  position: absolute;
+  right: 10px;
+}
+.reminder{
+  font-size: 11px;
+  color: #949fa1;
+  padding: 10px;
+}
+.serInfo-bottom-wrap{
+  padding: 10px;
+}
+.serveInfo-button{
+  
+  height: 0.6rem;
+  background: linear-gradient(to right,#eb5a36,#e60e0a);
+  border-radius: 0.06rem;
+  color: #fff;
+  
+  width: 100%;
+}
+
