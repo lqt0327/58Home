@@ -3,7 +3,8 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import config from './assets/js/conf/config.js';
 const HomeComponent = lazy(() => import('./pages/home/home/index'));
 const Detail = lazy(() => import('./pages/home/serve/detail.jsx'));
-const newAdress = lazy(() => import('./pages/user/adress/newAdress.jsx'))
+const newAdress = lazy(() => import('./pages/user/adress/newAdress.jsx'));
+const OrderDetails = lazy(()=> import('./pages/user/myOrder/orderDetails'));
 
 export default function RouterComponent() {
     return (
@@ -15,6 +16,7 @@ export default function RouterComponent() {
                             <Route path={config.path + "home"} component={HomeComponent} ></Route>
                             <Route path='/serve/detail' component={Detail}/>
                             <Route path='/user/newadress' component={newAdress}/>
+                            <Route path='/order/details' component={OrderDetails}/>
                             <Redirect to={config.path + "home/index"}></Redirect>
                         </Switch>
                     </Suspense>

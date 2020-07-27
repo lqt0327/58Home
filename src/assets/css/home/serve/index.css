@@ -144,12 +144,12 @@
     line-height: 0.7rem;
 }
 
-.active{
+.actives{
     color: red !important;
     background-color: white;
     position: relative;
 }
-.active::before{
+.actives::before{
     content: '';
     height: 0.34rem;
     width: 0.1rem;

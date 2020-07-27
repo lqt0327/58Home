@@ -4,7 +4,6 @@ import Swiper from '../../../assets/js/utils/swiper.min.js';
 import '../../../assets/js/utils/swiper.min.css';
 import config from '../../../assets/js/conf/config';
 import Search from '../../../components/search/search';
-import BScroll from 'better-scroll';
 
 export default function Index(props) {
     const [menu, setMenu] = useState(true);
@@ -15,46 +14,24 @@ export default function Index(props) {
 
     const [pageStyle, setPageStyle] = useState({ display: "none" })
 
-    const [bScroll, setBScroll] = useState(false);
-
-    const pageScroll = useRef();
     const pScroll = useRef(null);
     const Xscroll = useRef(null);
     const HScroll = useRef();
     const iconMenu = useRef();
     useEffect(() => {
-        // setScrollTop(global.scrollTop)
         getSwiper();
         handleScroll();
         handleRecoStyle();
         window.addEventListener("scroll", eventScroll, false);
-
-        // const scroll = new BScroll(pageScroll.current,{
-        //     probeType:1,
-        //     click:true,
-        //     pullDownRefresh: true
-        // })
-        // setTimeout(()=>{
-        //     scroll && scroll.refresh();
-        // },20)
-        
         return () => {
             window.removeEventListener("scroll", eventScroll);
         }
     })
-
     const eventScroll = () => {
         let scrollTop = document.documentElement.scrollTop;
         let opcity = (scrollTop / 100) > 1 ? 1 : (scrollTop / 100);
         HScroll.current.style.backgroundColor = `rgba(236,67,33,${opcity})`
     }
-    // const setScrollTop = (val=0) => () => {
-    //     setTimeout(()=>{
-    //         document.body.scrollTop = val;
-    //         document.documentElement.scrollTop = val;
-    //         console.log(document.body.scrollTop)
-    //     },300)
-    // }
     const changeSearch = () => {
         setPageStyle({ display: "block" })
     }
@@ -123,7 +100,7 @@ export default function Index(props) {
         document.documentElement.scrollTop = 0;
     }
     return (
-        <div className={Css['page']} ref={pageScroll}>
+        <div className={Css['page']}>
             <div className={Css['search-header']} ref={HScroll}>
                 <div className={Css['search-wrap']}>
                     <div className={Css['area']}><img src={require("../../../assets/images/home/index/togo.png")} alt="area" />南昌</div>

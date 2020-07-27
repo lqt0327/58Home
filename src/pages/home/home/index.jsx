@@ -19,7 +19,7 @@ function HomeComponent(props) {
         handleNavStyle();
         // console.log(props);
         // console.log(bHomeStyle,bNewsStyle,bServeStyle,bMyStyle);
-    },[props])
+    })
 
     const goPage = (url) => () => {
         // console.log(props);

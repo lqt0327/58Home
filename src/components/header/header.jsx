@@ -20,7 +20,7 @@ function Header(props) {
   <div className="title">{title}</div>
     </div>
     <div className="right-wrap">
-        <img src={require('../../assets/images/common/share.png')} alt="" className="right-icon icon" style={{display:`${isShare==1?'':'none'}`}} />
+        <img src={require('../../assets/images/common/share.png')} alt="" className="right-icon icon" style={{display:`${isShare===1?'':'none'}`}} />
     </div>
  </div>
   )

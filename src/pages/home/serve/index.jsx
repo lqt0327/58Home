@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, lazy } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import BScroll from 'better-scroll';
 import data from './serve.json';
 import '../../../assets/css/home/serve/index.css';
@@ -30,7 +30,6 @@ export default function Serve() {
         for (let tab of tabs) {
             let h = tab.getBoundingClientRect().height;
             let newH = base + h;
-            console.log(newH)
             ranges.push([base, newH])
             base = newH
         }
@@ -48,7 +47,6 @@ export default function Serve() {
                 onScroll()
             }, 300);
         })
-        console.log(ranges)
         
     }, [])
 
@@ -78,7 +76,7 @@ export default function Serve() {
                         {
                             data.map((item, i) => {
                                 return (
-                                    <li className={`${isActive === i + 1 ? 'active' : ''}`} onClick={() => {
+                                    <li className={`${isActive === i + 1 ? 'actives' : ''}`} onClick={() => {
                                         setActive(isActive = i + 1)
                                         scrollToAnthor(`${i + 1}`)
                                     }} key={i}
