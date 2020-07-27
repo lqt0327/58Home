@@ -5,7 +5,6 @@ const HomeComponent = lazy(() => import('./pages/home/home/index'));
 const Detail = lazy(() => import('./pages/home/serve/detail.jsx'));
 const newAdress = lazy(() => import('./pages/user/adress/newAdress.jsx'))
 const myOrder = lazy(()=>import('./pages/user/myOrder/index.jsx'))
-const newAdress = lazy(() => import('./pages/user/adress/newAdress.jsx'));
 const OrderDetails = lazy(()=> import('./pages/user/myOrder/orderDetails'));
 
 export default function RouterComponent() {

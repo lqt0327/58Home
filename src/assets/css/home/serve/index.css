@@ -3,8 +3,9 @@
 }
 .serveHeader{
     width: 7.5rem;
-    margin-top: 0.2rem;
+    padding-top: 0.2rem;
     display: flex;
+    background-color: white;
     /* background-color: cadetblue; */
 }
 .serveSearchBox{
