@@ -34,10 +34,13 @@ function NewAdress(props) {
       label:labelValue,
       default: true
     }
-    localStorage.setItem('adressData',JSON.stringify(adressData))
-    
-    props.dispatch(action.ad.addnewAdressInfo(adressData))
-    console.log(nameValue,sexValue,telValue,adressValue,numberAdressValue,labelValue,defaultAdress)
+    console.log(adressData.adress)
+    if(adressData.adress!=null){
+      localStorage.setItem('adressData',JSON.stringify(adressData))
+    }
+    let newadressdata = JSON.parse(localStorage.getItem('adressData'))
+    props.dispatch(action.ad.addnewAdressInfo(newadressdata))
+    // console.log(nameValue,sexValue,telValue,adressValue,numberAdressValue,labelValue,defaultAdress)
   }
  
   return (

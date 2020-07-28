@@ -24,20 +24,27 @@ let headerData = {
   title:'油烟机清洗',
   share: 1
 }
-// let adressData = JSON.parse(localStorage.getItem('adressData')) || []
-
 function Detail(props) {
-  console.log(props)
-  let {adress,number,name,tel} = props.state
+  let adressData = JSON.parse(localStorage.getItem('adressData')) || []
+  console.log(2222222, props)
+  let {adress,number,name,tel} = adressData
   let [countdata,setcountdata] = useState(standardsData)
-  useEffect(() => {
-    props.dispatch(action.detail.addDetailInfo(countdata))
-  }, [countdata]) 
-  let {detaildata} = props
-  console.log(detaildata)
+  // let {detaildata} = props
   // 判断是否有点击服务
   let [sumCount,setSumCount] = useState(0)
   let [isCount,setCount] = useState(false)
+  useEffect(() => {
+    // 如果有购买服务，则传入reducer
+    // console.log(countdata,'1111111111111')
+    if(sumCount>0){
+      // console.log(sumCount,'bbbbbbbbbbbbbbbbbbb')
+      localStorage.setItem('sumCount',JSON.stringify(countdata))
+    }
+    let countdatas = JSON.parse(localStorage.getItem('sumCount'))
+      console.log(countdatas,'2222222222')
+      props.dispatch(action.detail.addDetailInfo(countdatas))
+    
+  }, [countdata]) 
 //  console.log(countdata)
   // 是否选择伪类
   let [isSelected,setSelected] = useState(1)
@@ -45,10 +52,8 @@ function Detail(props) {
   let goodsBegin = useRef(null)
   let goodsDetail = useRef(null)
   let goodsRecommend = useRef(null)
-
   let [standards_wrap,setStandards_wrap]=useState(0)
   let [navShow,setnavShow] = useState(0)
-
   let [serveInfoshow,setServeInfoshow] = useState(0)
   // swiper 必备
   useEffect(()=>{
@@ -57,10 +62,7 @@ function Detail(props) {
       pagination: '.swiper-pagination',
       loop : true,
     })
-    
     function Scroll(){
-      // console.log(goodsBegin.current.getBoundingClientRect().top)
-     
       if(goodsBegin.current){
         goodsBegin.current.getBoundingClientRect().top<42?setnavShow(navShow=1):setnavShow(navShow=0)
       let detailTop = goodsBegin.current.getBoundingClientRect().top
@@ -74,7 +76,6 @@ function Detail(props) {
         setSelected(isSelected=3)
       }
       }
-      
     }
     // 监听滚动，如果有滚动，则隐藏nav
     window.addEventListener('scroll',Scroll)
@@ -95,7 +96,6 @@ let handleHidden = () => {
   setServeInfoshow(serveInfoshow=0)
 }
 let handleisCount = () =>{
-  console.log(sumCount)
   if(sumCount>0){
     setCount(isCount=true)
   }
@@ -113,7 +113,6 @@ let handleSelectToShow =() => {
   }
 }
   return (
-  
    <div className='bigwrap'>
       {/* 整个页面是否有暗黑色系 */}
      <div className={`${standards_wrap===1 || serveInfoshow===1?'wrap':''}`} onClick={handleHidden}></div>
@@ -325,7 +324,6 @@ let handleSelectToShow =() => {
    </div>
   )
 }
-
 export default connect(state => {
   return {
       state:state.ad,
