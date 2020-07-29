@@ -26,21 +26,19 @@ let headerData = {
 }
 function Detail(props) {
   let adressData = JSON.parse(localStorage.getItem('adressData')) || []
-
+  console.log(2222222, props)
   let {adress,number,name,tel} = adressData
   let [countdata,setcountdata] = useState(standardsData)
   // let {detaildata} = props
   // 判断是否有点击服务
-  let count = parseInt(localStorage.getItem('count')) || 0
-  let [sumCount,setSumCount] = useState(count)
+  let [sumCount,setSumCount] = useState(0)
+  let [isCount,setCount] = useState(false)
   useEffect(() => {
     // 如果有购买服务，则传入reducer
     // console.log(countdata,'1111111111111')
     if(sumCount>0){
-      localStorage.setItem('sumCount',JSON.stringify(Object.values(countdata).filter((item)=>{
-        console.log(item)
-        return item.count!==0
-      })))
+      // console.log(sumCount,'bbbbbbbbbbbbbbbbbbb')
+      localStorage.setItem('sumCount',JSON.stringify(countdata))
     }
     let countdatas = JSON.parse(localStorage.getItem('sumCount'))
       console.log(countdatas,'2222222222')
@@ -97,10 +95,14 @@ let handleHidden = () => {
   setStandards_wrap(standards_wrap=0)
   setServeInfoshow(serveInfoshow=0)
 }
+let handleisCount = () =>{
+  if(sumCount>0){
+    setCount(isCount=true)
+  }
+}
 // 点击立即购买时应该选择展示什么
 let handleSelectToShow =() => {
-  console.log(props.state.adress)
-  if(adress===''){
+  if(props.state.adress===''){
     props.history.push('/user/newadress')
   }
   else if(sumCount===0){
@@ -111,8 +113,6 @@ let handleSelectToShow =() => {
     props.history.push('/order/details')
   }
 }
-
-// 以下是 div 容器
 // nav
 let NavWrap = () =>{
   return (    <div className={navShow===1?'nav':'nav-hidden'}>
@@ -178,9 +178,9 @@ let StandardWrap = () =>{
   <div className='adress-item-title'>规格</div>
   <div className='adress-item-input-wrap'>
     
-    {!sumCount?<input type="text" placeholder='请选择服务规格' className='adress-item-input'  readOnly/>:
+    {!isCount?<input type="text" placeholder='请选择服务规格' className='adress-item-input'  readOnly/>:
     standardsData.map((item,i)=>{
-     return item.count===0?'':<div key={i} style={{fontSize:'12px'}}>{`${countdata[i].title} (${countdata[i].count}台)`}</div>
+     return item.count===0?'':<div key={i}>{`${countdata[i].title} (${countdata[i].count}台)`}</div>
     })}
 
     </div>
@@ -273,8 +273,7 @@ let BottomWrap = () =>{
              }
              if(state[i].count>0) {state[i].count--
              setSumCount(sumCount-=1)
-             localStorage.setItem('count',sumCount)
-             setcountdata(countdata=state)}
+             setcountdata(state)}
            }}><img className='standards-minus' src={require('../../../assets/images/common/minus.png')} alt=""/></div>
            <p className="standards-count">{countdata[i].count}</p>
            <div onClick={()=>{
@@ -283,15 +282,14 @@ let BottomWrap = () =>{
              }
              state[i].count++
              setSumCount(sumCount+=1)
-             localStorage.setItem('count',sumCount)
-             setcountdata(countdata=state)
+             setcountdata(state)
            }}><img className='standards-add' src={require('../../../assets/images/common/add.png')} alt=""/></div>
          </div>
        </li>
        })}
      </ul>
    </div>
-   <div className="standards-bottom-wrap" onClick={()=>{handleHidden();}}>
+   <div className="standards-bottom-wrap" onClick={()=>{handleHidden();handleisCount()}}>
        <input type="button" className="standards-button" value='确定'/>
    </div>
  </div>)
