@@ -57,7 +57,7 @@ function OrderDetails(props) {
   const goPage = (url) => () => {
     localStorage.setItem("msgData", JSON.stringify(msgData));
     localStorage.setItem("price", aprice);
-    props.history.replace(config.path + url);
+    props.history.push(config.path + url);
   };
   return (
     <Page>
@@ -105,7 +105,7 @@ function OrderDetails(props) {
           <div className="pay-details" onClick={handleOrder}>
             需支付:&nbsp;&nbsp;<span>239元</span>
           </div>
-          <div className="pay-btn" onClick={goPage("serve/detail")}>
+          <div className="pay-btn" onClick={goPage("order/payment")}>
             去结算
           </div>
         </div>

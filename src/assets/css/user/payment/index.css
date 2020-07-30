@@ -1,0 +1,104 @@
+.paymentHeader{
+    display: flex;
+    justify-content: space-between;
+    width: 7.5rem;
+    height: 0.88rem;
+    align-items: center;
+    border: none;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    z-index: 99;
+}
+.paymentHeader .paymentHeaderLeft{
+    width: 0.4rem;
+    height: 0.4rem;
+    background: url(../../../images/common/back.png);
+    background-size: 100%;
+    margin-left: 0.3rem;
+}
+.paymentHeader .paymentHeaderTitle{
+    width: 3rem;
+    text-align: center;
+    font-weight: 600;
+}
+.paymentHeader .paymentHeaderRight{
+    width: 0.4rem;
+    margin-right: 0.3rem;
+}
+
+.payMoney {
+    margin-top: 0.88rem;
+    width: 7.5rem;
+    text-align: center;
+    height: 2rem;
+    line-height: 2rem;
+    background-color: white;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: black;
+}
+.payType{
+    width: 7.5rem;
+    height: 3rem;
+    margin-top: 0.2rem;
+}
+.payType label{
+    display: block;
+    width: 7.5rem;
+    margin: 0 auto;
+    height: 1.2rem;
+    background-color: white;
+    border-bottom: 0.02rem solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.payType label .zfbImg,.payType label .wxImg,.payType label .hbImg{
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-left: 0.3rem;
+}
+.payType label .zfbImg{
+    background: url(../../../images/user/zhifubao.png);
+    background-size: 100%;
+}
+.payType label .wxImg{
+    background: url(../../../images/user/weixin.png);
+    background-size: 100%;
+}
+.payType label .hbImg{
+    background: url(../../../images/user/huabei.png);
+    background-size: 100%;
+}
+.payType label .payName{
+    width: 5rem;
+}
+.payType label .payName span{
+    font-size: 0.26rem;
+    color: #878d9a;
+}
+.payType label .paySelect{
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.3rem;
+    text-align: center;
+}
+
+.payBtn{
+    width: 7.5rem;
+    height: 1rem;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    line-height: 1rem;
+}
+.payBtn button{
+    text-decoration: none;
+    width: 90%;
+    height: 80%;
+    background-color: #f74e44;
+    border: none;
+    color: white;
+}
