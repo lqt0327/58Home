@@ -24,9 +24,11 @@ let headerData = {
   title:'油烟机清洗',
   share: 1
 }
-function Detail(props) {
-  let adressData = JSON.parse(localStorage.getItem('adressData')) || []
 
+function Detail(props) {
+  let allAdressData = JSON.parse(localStorage.getItem('allAdressData')) || []
+  let adressData = JSON.parse(localStorage.getItem('adressData')) || []
+  console.log(allAdressData,'33333333333333333')
   let {adress,number,name,tel} = adressData
   let [countdata,setcountdata] = useState(standardsData)
   // let {detaildata} = props
@@ -37,7 +39,7 @@ function Detail(props) {
     // 如果有购买服务，则传入reducer
     // console.log(countdata,'1111111111111')
     if(sumCount>0){
-      localStorage.setItem('sumCount',JSON.stringify(Object.values(countdata).filter((item)=>{
+      localStorage.setItem('sumCount',JSON.stringify(countdata.filter((item)=>{
         console.log(item)
         return item.count!==0
       })))
@@ -97,6 +99,7 @@ let handleHidden = () => {
   setStandards_wrap(standards_wrap=0)
   setServeInfoshow(serveInfoshow=0)
 }
+var handleServeInfoButton=null
 // 点击立即购买时应该选择展示什么
 let handleSelectToShow =() => {
   console.log(props.state.adress)
@@ -108,7 +111,7 @@ let handleSelectToShow =() => {
   }
   else{
     setServeInfoshow(serveInfoshow=1)
-    props.history.push('/order/details')
+    // props.history.push('/order/details')
   }
 }
 
@@ -163,11 +166,11 @@ let SwiperWrap = () =>{
 let AdressWrap = () =>{
   return (     <div className="adress-item">
   <div className='adress-item-title'>地址</div>
-  <Link to='/user/newadress' style={{textDecoration:'none', color:'#000'}} className="linkToNewAdress">
+  <div onClick={()=>{allAdressData.length==0?props.history.push('/user/newadress'):props.history.push('/user/adressList')}} style={{textDecoration:'none', color:'#000'}} className="linkToNewAdress">
   {adress===''?<input type="text" placeholder='请选择服务地址' className='adress-item-input' value={props.state.name} readOnly />
  :<div style={{fontSize:'12px'}}><span>{adress}</span>&nbsp;<span>{number}</span><br/>
  <span>{name}</span>&nbsp;<span>{tel}</span></div>}
-  </Link>
+  </div>
   <div className='adress-item-logo'><img src={require("../../../assets/images/common/goto.png")} className="adress-img"/></div>
   
 </div>)
@@ -268,9 +271,7 @@ let BottomWrap = () =>{
          </div>
          <div className="standards-count-wrap">
            <div onClick={(e)=>{
-             let state = {
-               ...countdata
-             }
+             let state = [...countdata]
              if(state[i].count>0) {state[i].count--
              setSumCount(sumCount-=1)
              localStorage.setItem('count',sumCount)
@@ -278,9 +279,7 @@ let BottomWrap = () =>{
            }}><img className='standards-minus' src={require('../../../assets/images/common/minus.png')} alt=""/></div>
            <p className="standards-count">{countdata[i].count}</p>
            <div onClick={()=>{
-             let state = {
-               ...countdata
-             }
+            let state = [...countdata]
              state[i].count++
              setSumCount(sumCount+=1)
              localStorage.setItem('count',sumCount)
@@ -343,7 +342,7 @@ let BottomWrap = () =>{
      </p>
    </div>
    <div className="serInfo-bottom-wrap" >
-     <input type="button" className="serveInfo-button" value='确定'/>
+     <input type="button" className="serveInfo-button" value='确定' onClick={()=>props.history.push('/order/details')}/>
  </div>
 </div>)
  }
