@@ -8,6 +8,7 @@ const EditAdress = lazy(() => import('./pages/user/adress/editAdress.jsx'))
 const AdressList = lazy(() => import('./pages/user/adress/adressList'))
 const myOrder = lazy(()=>import('./pages/user/myOrder/index.jsx'))
 const OrderDetails = lazy(()=> import('./pages/user/myOrder/orderDetails'));
+const Payment = lazy(()=>import('./pages/user/myOrder/payment.jsx'));
 
 export default function RouterComponent() {
     return (
@@ -23,6 +24,7 @@ export default function RouterComponent() {
                             <Route path='/user/editadress/:id' component={EditAdress}/>
                             <Route path='/user/myorder' component={myOrder}/>
                             <Route path='/order/details' component={OrderDetails}/>
+                            <Route path='/order/payment' component={Payment} />
                             <Redirect to={config.path + "home/index"}></Redirect>
                         </Switch>
                     </Suspense>
