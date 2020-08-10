@@ -1,4 +1,4 @@
-import React,{useRef, useState, useEffect} from "react";
+import React,{useState} from "react";
 import { connect } from 'react-redux'
 import Header from "../../../components/header/header";
 import '../../../assets/css/user/adress/adress.css'
@@ -45,7 +45,7 @@ function NewAdress(props) {
       id:Math.random()
     }
     for(let item in adressData){
-      console.log(adressData[item],item)
+      // console.log(adressData[item],item)
       if(adressData[item]==null){
         setshowalert(showalert='block')
         return;

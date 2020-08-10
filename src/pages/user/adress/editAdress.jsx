@@ -1,4 +1,4 @@
-import React,{useRef, useState, useEffect} from "react";
+import React,{useState, useEffect} from "react";
 import { connect } from 'react-redux'
 import Header from "../../../components/header/header";
 import '../../../assets/css/user/adress/adress.css'
@@ -15,7 +15,7 @@ let headerData = {
 };
 
 function EditAdress(props) {
-  console.log(props)
+  // console.log(props)
   let allAdressData = JSON.parse(localStorage.getItem('allAdressData')) || []
   const {id} = props.match.params
   
@@ -33,8 +33,9 @@ function EditAdress(props) {
   let [adressData,setAdressData] = useState({})
   useEffect(()=>{
     
-    let adressData1 = allAdressData.find((item)=> item.id==id)
-    console.log(adressData1,'abcdefg')
+    let adressData1 = allAdressData.find((item)=> item.id===+id)
+
+    // console.log(adressData1,'abcdefg')
     setAdressData(adressData=adressData1)
     },[])
     const {name,sex,tel,adress,number,label,defaults} = adressData
@@ -57,16 +58,16 @@ function EditAdress(props) {
       id:id
     }
     for(let item in adressData){
-      console.log(adressData[item],item)
+      // console.log(adressData[item],item)
       if(adressData[item]==null){
         setshowalert(showalert='block')
         return;
       }
     }
     if(adressData.adress!=null){
-     allAdressData= allAdressData.filter((item)=> item.id!=id )
+     allAdressData= allAdressData.filter((item)=> item.id!==id )
      allAdressData.push(adressData)
-     console.log(allAdressData,'qqqqqqqqqqqqqqqq')
+    //  console.log(allAdressData,'qqqqqqqqqqqqqqqq')
       localStorage.setItem('adressData',JSON.stringify(adressData))
       localStorage.setItem('allAdressData',JSON.stringify(allAdressData))
     }
@@ -76,7 +77,7 @@ function EditAdress(props) {
     window.history.go(-1)
   }
   let handleDelete = ()=>{
-    allAdressData= allAdressData.filter((item)=> item.id!=id )
+    allAdressData= allAdressData.filter((item)=> item.id!==id )
     localStorage.setItem('allAdressData',JSON.stringify(allAdressData))
     window.history.go(-1)
   }
@@ -94,10 +95,10 @@ function EditAdress(props) {
             </div>
             <div className="sex" onClick={(e)=> setSexValue(e.target.value)}>
               <form >
-                {console.log(sex,'llllllllllllll')}
-                <input type="radio" name="sex" value="boy" id="boy" className='boy' defaultChecked={sex=='boy'?true:false} />
+                {/* {console.log(sex,'llllllllllllll')} */}
+                <input type="radio" name="sex" value="boy" id="boy" className='boy' defaultChecked={sex==='boy'?true:false} />
                 <label htmlFor="boy">先生</label>
-                <input type="radio" name="sex" value="girl" id="girl" className='girl' defaultChecked={sex=='boy'?false:true}  />
+                <input type="radio" name="sex" value="girl" id="girl" className='girl' defaultChecked={sex==='boy'?false:true}  />
                 <label htmlFor="girl">女士</label>
               </form>
             </div>

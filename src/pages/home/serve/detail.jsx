@@ -28,7 +28,6 @@ let headerData = {
 function Detail(props) {
   let allAdressData = JSON.parse(localStorage.getItem('allAdressData')) || []
   let adressData = JSON.parse(localStorage.getItem('adressData')) || []
-  console.log(allAdressData,'33333333333333333')
   let {adress,number,name,tel} = adressData
   let [countdata,setcountdata] = useState(standardsData)
   // let {detaildata} = props
@@ -36,19 +35,15 @@ function Detail(props) {
   let count = parseInt(localStorage.getItem('count')) || 0
   let [sumCount,setSumCount] = useState(count)
   useEffect(() => {
-    // 如果有购买服务，则传入reducer
-    // console.log(countdata,'1111111111111')
     if(sumCount>0){
       localStorage.setItem('sumCount',JSON.stringify(countdata.filter((item)=>{
-        console.log(item)
         return item.count!==0
       })))
     }
     let countdatas = JSON.parse(localStorage.getItem('sumCount'))
-      console.log(countdatas,'2222222222')
       props.dispatch(action.detail.addDetailInfo(countdatas))
     
-  }, [countdata]) 
+  }, [countdata,props,sumCount]) 
 //  console.log(countdata)
   // 是否选择伪类
   let [isSelected,setSelected] = useState(1)
@@ -61,7 +56,7 @@ function Detail(props) {
   let [serveInfoshow,setServeInfoshow] = useState(0)
   // swiper 必备
   useEffect(()=>{
-   let s =  new Swiper('.swiper-container', {
+      new Swiper('.swiper-container', {
       autoplay:1000,
       pagination: '.swiper-pagination',
       loop : true,
@@ -102,7 +97,6 @@ let handleHidden = () => {
 var handleServeInfoButton=null
 // 点击立即购买时应该选择展示什么
 let handleSelectToShow =() => {
-  console.log(props.state.adress)
   if(adress===''){
     props.history.push('/user/newadress')
   }
