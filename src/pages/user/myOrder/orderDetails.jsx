@@ -2,15 +2,29 @@ import React, { useRef, useEffect, useState } from 'react';
 import Head from '../../../components/header/header';
 import { Page, Top, List, ServeAddress, Bottom, ActionSheet } from './orderDetails.style';
 import config from '../../../assets/js/conf/config';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 function OrderDetails (props) {
     const actionSheet = useRef();
     const [isShow,setIsShow] = useState(false);
+    const [msgPrice, setMsgPrice] = useState(props.detail);
+    const [aprice, setPrice] = useState(0);
+    let price = 0;
+    let msgData = Object.values(props.detail);
     const headerData = {
         title:'空调清洗',
         share: 1
     }
     useEffect(() => {
+        setMsgPrice(localStorage.getItem('msgData')?JSON.parse(localStorage.getItem('msgData')):msgData);
+        // console.log(msgData,msgPrice);
+        // console.log(JSON.parse(JSON.stringify(localStorage.getItem('msgData'))));
+        for(let i =0; i < msgData.length; i++) {
+            price += msgData[i].price * msgData[i].count;
+        }
+        setPrice(localStorage.getItem('price') ? JSON.parse(localStorage.getItem('price')) : price);
+        // console.log(price);
         return () => {
             
         }
@@ -25,17 +39,27 @@ function OrderDetails (props) {
         }
     }
     const goPage = (url) => () => {
+        localStorage.setItem('msgData',JSON.stringify(msgData));
+        localStorage.setItem('price',aprice);
         props.history.replace(config.path+url)
     }
     return (
         <Page>
             <Head headerData={headerData}></Head>
             <Top>
-                <p><span>1</span>台挂机</p>
-                <p><span>1</span>台油烟机</p>
+                {
+                    msgPrice ? Object.values(msgPrice).map((item,index)=> {
+                        return (
+                            <p key={index}>
+                                <span>{item.count}</span>
+                                {item.title}
+                            </p>
+                        )
+                    }):''
+                }
                 <div>
                     <div className="time">08-01 (周六) 9:30</div>
-                    <div className="price">145元</div>
+                    <div className="price">{aprice}元</div>
                 </div>
             </Top>
             <List>
@@ -75,4 +99,6 @@ function OrderDetails (props) {
     )
 }
 
-export default OrderDetails;
+export default connect((state)=>{
+    return state;
+})(withRouter(OrderDetails));

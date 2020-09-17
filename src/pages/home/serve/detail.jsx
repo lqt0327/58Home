@@ -27,14 +27,14 @@ let headerData = {
 // let adressData = JSON.parse(localStorage.getItem('adressData')) || []
 
 function Detail(props) {
-  console.log(props)
+  // console.log(props)
   let {adress,number,name,tel} = props.state
   let [countdata,setcountdata] = useState(standardsData)
   useEffect(() => {
     props.dispatch(action.detail.addDetailInfo(countdata))
   }, [countdata]) 
   let {detaildata} = props
-  console.log(detaildata)
+  // console.log(detaildata)
   // 判断是否有点击服务
   let [sumCount,setSumCount] = useState(0)
   let [isCount,setCount] = useState(false)
@@ -110,6 +110,7 @@ let handleSelectToShow =() => {
   }
   else{
     setServeInfoshow(serveInfoshow=1)
+    props.history.push('/order/details');
   }
 }
   return (
