@@ -6,7 +6,6 @@ import config from '../../assets/js/conf/config';
 import { withRouter } from 'react-router';
 
 function Search(props) {
-    console.log(props)
     const search = useRef()
     const [bTop, setBTop] = useState(true);
     const [hKeywords, setHKeywords] = useState();

@@ -26,11 +26,22 @@ let headerData = {
 }
 
 function Detail(props) {
+<<<<<<< HEAD
   let allAdressData = JSON.parse(localStorage.getItem('allAdressData')) || []
   let adressData = JSON.parse(localStorage.getItem('adressData')) || []
   let {adress,number,name,tel} = adressData
   let [countdata,setcountdata] = useState(standardsData)
   // let {detaildata} = props
+=======
+  // console.log(props)
+  let {adress,number,name,tel} = props.state
+  let [countdata,setcountdata] = useState(standardsData)
+  useEffect(() => {
+    props.dispatch(action.detail.addDetailInfo(countdata))
+  }, [countdata]) 
+  let {detaildata} = props
+  // console.log(detaildata)
+>>>>>>> end-lqt2
   // 判断是否有点击服务
   let count = parseInt(localStorage.getItem('count')) || 0
   let [sumCount,setSumCount] = useState(count)
@@ -105,7 +116,11 @@ let handleSelectToShow =() => {
   }
   else{
     setServeInfoshow(serveInfoshow=1)
+<<<<<<< HEAD
     // props.history.push('/order/details')
+=======
+    props.history.push('/order/details');
+>>>>>>> end-lqt2
   }
 }
 
